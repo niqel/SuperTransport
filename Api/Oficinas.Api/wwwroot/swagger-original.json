@@ -1,0 +1,215 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Transportes Cuauhtémoc",
+    "description" : "Transportes Cuauhtémoc (ASP.NET Core 3.1)",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "/"
+  } ],
+  "security" : [ {
+    "Bearer" : [ ]
+  } ],
+  "tags" : [ {
+    "name" : "offices",
+    "description" : "Operaciones con Oficinas"
+  } ],
+  "paths" : {
+    "/offices" : {
+      "get" : {
+        "tags" : [ "offices" ],
+        "summary" : "Obtiene las oficinas en el sistema",
+        "operationId" : "GetOffices",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Office"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "ProblemDetails" : {
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "title" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "status" : {
+            "type" : "integer",
+            "nullable" : true
+          },
+          "detail" : {
+            "type" : "string",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "instance" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : {
+          "type" : "object",
+          "additionalProperties" : false
+        }
+      },
+      "BaseEntity" : {
+        "required" : [ "active", "created_at", "created_by", "id", "updated_at", "updated_by" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "El id de esta entidad",
+            "format" : "int32"
+          },
+          "active" : {
+            "type" : "boolean",
+            "description" : "La entidad se encuentra activa"
+          },
+          "created_by" : {
+            "type" : "integer",
+            "description" : "El id del usuario que creo esta entidad",
+            "format" : "int32"
+          },
+          "created_at" : {
+            "type" : "string",
+            "description" : "La fecha de creación de la entidad",
+            "format" : "date-time"
+          },
+          "updated_by" : {
+            "type" : "integer",
+            "description" : "El id del último usuario que actualizo esta entidad",
+            "format" : "int32"
+          },
+          "updated_at" : {
+            "type" : "string",
+            "description" : "La fecha de la última actualización de la entidad",
+            "format" : "date-time"
+          }
+        }
+      },
+      "Coordinates" : {
+        "required" : [ "latitude", "longitude" ],
+        "type" : "object",
+        "properties" : {
+          "latitude" : {
+            "type" : "number",
+            "description" : "Latitud",
+            "format" : "double"
+          },
+          "longitude" : {
+            "type" : "number",
+            "description" : "Longitud",
+            "format" : "double"
+          }
+        },
+        "description" : "Las coordenadas de esta ubicación"
+      },
+      "Office" : {
+        "required" : [ "city", "coordinates", "description", "name" ],
+        "description" : "Oficina",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/BaseEntity"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "name" : {
+              "type" : "string",
+              "description" : "El nombre de esta oficina"
+            },
+            "description" : {
+              "type" : "string",
+              "description" : "La descripción de esta oficina"
+            },
+            "city" : {
+              "type" : "integer",
+              "description" : "El id de la ciudad en la que se encuentra esta oficina",
+              "format" : "int32"
+            },
+            "coordinates" : {
+              "$ref" : "#/components/schemas/Coordinates"
+            }
+          }
+        } ]
+      }
+    },
+    "responses" : {
+      "OK" : {
+        "description" : "OK",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ProblemDetails"
+            }
+          }
+        }
+      },
+      "BadRequest" : {
+        "description" : "Bad Request",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ProblemDetails"
+            }
+          }
+        }
+      },
+      "Unauthorized" : {
+        "description" : "Unauthorized",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ProblemDetails"
+            }
+          }
+        }
+      },
+      "NotFound" : {
+        "description" : "Not Found",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ProblemDetails"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "Bearer" : {
+        "type" : "http",
+        "scheme" : "bearer",
+        "bearerFormat" : "JWT"
+      }
+    }
+  }
+}

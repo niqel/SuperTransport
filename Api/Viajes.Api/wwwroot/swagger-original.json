@@ -1,0 +1,2192 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Transportes Cuauhtémoc",
+    "description" : "Transportes Cuauhtémoc (ASP.NET Core 3.1)",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "/"
+  } ],
+  "security" : [ {
+    "Bearer" : [ ]
+  } ],
+  "tags" : [ {
+    "name" : "locations",
+    "description" : "Operaciones con ubicaciones"
+  }, {
+    "name" : "forecasts",
+    "description" : "Operaciones con forecasts"
+  }, {
+    "name" : "load-plans",
+    "description" : "Operaciones con planes de carga"
+  }, {
+    "name" : "traffic-plans",
+    "description" : "Operaciones con planes de tráfico"
+  }, {
+    "name" : "travel-plans",
+    "description" : "Operaciones con plan de viajes"
+  }, {
+    "name" : "internal-transfers",
+    "description" : "Operaciones con transferencias interoficina"
+  } ],
+  "paths" : {
+    "/locations" : {
+      "get" : {
+        "tags" : [ "locations" ],
+        "summary" : "Obtiene las ubicaciones",
+        "operationId" : "GetLocations",
+        "parameters" : [ {
+          "name" : "type",
+          "in" : "query",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/LocationType"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Location"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/forecasts" : {
+      "get" : {
+        "tags" : [ "forecasts" ],
+        "summary" : "Obtiene los forecast",
+        "operationId" : "GetForecasts",
+        "parameters" : [ {
+          "name" : "startDate",
+          "in" : "query",
+          "description" : "La primera fecha a consultar",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "endDate",
+          "in" : "query",
+          "description" : "La última fecha a consultar",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "edited",
+          "in" : "query",
+          "description" : "Filtrar elementos que han sido editados desde la interfaz gráfica",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "boolean"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Forecast"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "forecasts" ],
+        "summary" : "Actualiza los forecasts",
+        "operationId" : "UpdateForecasts",
+        "parameters" : [ {
+          "name" : "startDate",
+          "in" : "query",
+          "description" : "La primera fecha a incluir en el forecast",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "endDate",
+          "in" : "query",
+          "description" : "La última fecha a incluir en el forecast",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "array",
+                "items" : {
+                  "$ref" : "#/components/schemas/Forecast"
+                }
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/forecasts/upload" : {
+      "put" : {
+        "tags" : [ "forecasts" ],
+        "summary" : "Sube un archivo de forecasts",
+        "operationId" : "UploadForecasts",
+        "requestBody" : {
+          "content" : {
+            "multipart/form-data" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/FileUpload"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Forecast"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/travel-plans" : {
+      "get" : {
+        "tags" : [ "travel-plans" ],
+        "summary" : "Obtiene los planes de viaje del periodo especificado",
+        "description" : "Ejecuta el algoritmo de planeación y regresa el resultado correspondiente",
+        "operationId" : "GetTravelPlans",
+        "parameters" : [ {
+          "name" : "startDate",
+          "in" : "query",
+          "description" : "La primera fecha a considerar",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "endDate",
+          "in" : "query",
+          "description" : "La última fecha a considerar",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/TravelPlan"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/internal-transfers" : {
+      "get" : {
+        "tags" : [ "internal-transfers" ],
+        "summary" : "Obtiene las transferencias interoficina",
+        "operationId" : "GetInternalTransfers",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/InternalTransfer"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "internal-transfers" ],
+        "summary" : "Añade una transferencia interoficina",
+        "operationId" : "AddInternalTransfer",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/InternalTransfer"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/internal-transfers/{id}" : {
+      "put" : {
+        "tags" : [ "internal-transfers" ],
+        "summary" : "Actualiza una transferencia interoficina",
+        "operationId" : "UpdateInternalTransfer",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "El id de la transferencia interoficina",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/InternalTransfer"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not Found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/internal-transfers/approval-status" : {
+      "get" : {
+        "tags" : [ "internal-transfers" ],
+        "summary" : "Obtiene los status de aprobación de las transferencias interoficina",
+        "operationId" : "GetInternalTransfersApprovalStatus",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/NamedEntity"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/load-plans/{year}/{month}" : {
+      "get" : {
+        "tags" : [ "load-plans" ],
+        "summary" : "Obtiene el plan de carga",
+        "operationId" : "GetLoadPlans",
+        "parameters" : [ {
+          "name" : "year",
+          "in" : "path",
+          "description" : "El año del plan de carga",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }, {
+          "name" : "month",
+          "in" : "path",
+          "description" : "El mes del plan de carga",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/LoadPlan"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "load-plans" ],
+        "summary" : "Actualiza el plan de carga",
+        "operationId" : "UpdateLoadPlans",
+        "parameters" : [ {
+          "name" : "year",
+          "in" : "path",
+          "description" : "El año del plan de carga",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }, {
+          "name" : "month",
+          "in" : "path",
+          "description" : "El mes del plan de carga",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "array",
+                "items" : {
+                  "$ref" : "#/components/schemas/LoadPlan"
+                }
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/load-plans/{year}/{month}/metrics" : {
+      "get" : {
+        "tags" : [ "load-plans" ],
+        "summary" : "Obtiene las métricas del plan de carga",
+        "operationId" : "GetLoadPlansMetrics",
+        "parameters" : [ {
+          "name" : "year",
+          "in" : "path",
+          "description" : "El año del plan de carga",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }, {
+          "name" : "month",
+          "in" : "path",
+          "description" : "El mes del plan de carga",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/LoadPlansMetrics"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/traffic-plans" : {
+      "get" : {
+        "tags" : [ "traffic-plans" ],
+        "summary" : "Obtiene los planes de tráfico",
+        "operationId" : "GetTrafficPlans",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/TrafficPlan"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "traffic-plans" ],
+        "summary" : "Añade un plan de tráfico",
+        "operationId" : "AddTrafficPlan",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/TrafficPlan"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/traffic-plans/{id}" : {
+      "put" : {
+        "tags" : [ "traffic-plans" ],
+        "summary" : "Actualiza un plan de tráfico",
+        "operationId" : "UpdateTrafficPlan",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "El id del plan de tráfico",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/TrafficPlan"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not Found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "traffic-plans" ],
+        "summary" : "Elimina un plan de tráfico",
+        "operationId" : "DeleteTrafficPlan",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "El id del plan de tráfico",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not Found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/traffic-plans/upload" : {
+      "put" : {
+        "tags" : [ "traffic-plans" ],
+        "summary" : "Sube un archivo de plan de tráfico",
+        "operationId" : "UploadTrafficPlans",
+        "requestBody" : {
+          "content" : {
+            "multipart/form-data" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/FileUpload"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/TrafficPlan"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dashboard/fleet-loaded-vs-empty" : {
+      "get" : {
+        "tags" : [ "dashboard" ],
+        "summary" : "Obtiene las series de datos para la gráfica Cantidad de Flota Cargada vs Vacía",
+        "operationId" : "GetLoadedVsEmpty",
+        "parameters" : [ {
+          "name" : "startDate",
+          "in" : "query",
+          "description" : "La primera fecha a consultar",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "endDate",
+          "in" : "query",
+          "description" : "La última fecha a consultar",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/FleetLoadedVsEmpty"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dashboard/forecast-vs-real" : {
+      "get" : {
+        "tags" : [ "dashboard" ],
+        "summary" : "Obtiene las series de datos para la gráfica Forecast vs Real",
+        "operationId" : "GetForecastVsReal",
+        "parameters" : [ {
+          "name" : "startDate",
+          "in" : "query",
+          "description" : "La primera fecha a consultar",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "endDate",
+          "in" : "query",
+          "description" : "La última fecha a consultar",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ForecastVsReal"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dashboard/trips-made-vs-cancelled" : {
+      "get" : {
+        "tags" : [ "dashboard" ],
+        "summary" : "Obtiene las series de datos para la gráfica Viajes Realizados vs Cancelados",
+        "operationId" : "GetTripsMadeVsCancelled",
+        "parameters" : [ {
+          "name" : "startDate",
+          "in" : "query",
+          "description" : "La primera fecha a consultar",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "endDate",
+          "in" : "query",
+          "description" : "La última fecha a consultar",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/TripsMadeVsCancelled"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dashboard/trucks-usage" : {
+      "get" : {
+        "tags" : [ "dashboard" ],
+        "summary" : "Obtiene las series de datos para la gráfica Uso de Equipo Actual",
+        "operationId" : "GetTrucksUsage",
+        "parameters" : [ {
+          "name" : "startDate",
+          "in" : "query",
+          "description" : "La primera fecha a consultar",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "endDate",
+          "in" : "query",
+          "description" : "La última fecha a consultar",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/TrucksUsage"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "ProblemDetails" : {
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "title" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "status" : {
+            "type" : "integer",
+            "nullable" : true
+          },
+          "detail" : {
+            "type" : "string",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "instance" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : {
+          "type" : "object",
+          "additionalProperties" : false
+        }
+      },
+      "BaseEntity" : {
+        "required" : [ "active", "created_at", "created_by", "id", "updated_at", "updated_by" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "El id de esta entidad",
+            "format" : "int32"
+          },
+          "active" : {
+            "type" : "boolean",
+            "description" : "La entidad se encuentra activa"
+          },
+          "created_by" : {
+            "type" : "integer",
+            "description" : "El id del usuario que creo esta entidad",
+            "format" : "int32"
+          },
+          "created_at" : {
+            "type" : "string",
+            "description" : "La fecha de creación de la entidad",
+            "format" : "date-time"
+          },
+          "updated_by" : {
+            "type" : "integer",
+            "description" : "El id del último usuario que actualizo esta entidad",
+            "format" : "int32"
+          },
+          "updated_at" : {
+            "type" : "string",
+            "description" : "La fecha de la última actualización de la entidad",
+            "format" : "date-time"
+          }
+        }
+      },
+      "NamedEntity" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/BaseEntity"
+        }, {
+          "required" : [ "description", "name" ],
+          "type" : "object",
+          "properties" : {
+            "name" : {
+              "type" : "string",
+              "description" : "El nombre de esta entidad"
+            },
+            "description" : {
+              "type" : "string",
+              "description" : "El nombre de esta entidad"
+            }
+          }
+        } ]
+      },
+      "FileUpload" : {
+        "required" : [ "file" ],
+        "type" : "object",
+        "properties" : {
+          "file" : {
+            "type" : "string",
+            "format" : "binary"
+          }
+        }
+      },
+      "Forecast" : {
+        "required" : [ "customer", "date", "market_type", "origin", "truck_type" ],
+        "type" : "object",
+        "properties" : {
+          "customer" : {
+            "type" : "integer",
+            "description" : "El id de este cliente",
+            "format" : "int32",
+            "nullable" : false
+          },
+          "origin" : {
+            "type" : "integer",
+            "description" : "El id de la localización del origen",
+            "format" : "int32",
+            "nullable" : false
+          },
+          "market_type" : {
+            "type" : "integer",
+            "description" : "El id del tipo de mercado",
+            "format" : "int32",
+            "nullable" : false
+          },
+          "truck_type" : {
+            "type" : "integer",
+            "description" : "Cantidad de Vins en el Plan",
+            "format" : "int32",
+            "nullable" : false
+          },
+          "date" : {
+            "type" : "string",
+            "description" : "Fecha programada",
+            "format" : "date",
+            "nullable" : false
+          },
+          "trucks_quantity" : {
+            "type" : "integer",
+            "description" : "Cantidad de tractores solicitados",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "trucks_quantity_edited" : {
+            "type" : "integer",
+            "description" : "Valor editado de la cantidad de tractores solicitados",
+            "format" : "int32",
+            "nullable" : true
+          }
+        },
+        "example" : {
+          "truck_type" : 5,
+          "date" : "2000-01-23",
+          "trucks_quantity" : 5,
+          "origin" : 6,
+          "trucks_quantity_edited" : 2,
+          "market_type" : 1,
+          "customer" : 0
+        }
+      },
+      "LoadPlansMetrics" : {
+        "required" : [ "date", "fleet", "truck_operators", "trucks" ],
+        "type" : "object",
+        "properties" : {
+          "date" : {
+            "type" : "string",
+            "description" : "Fecha",
+            "format" : "date"
+          },
+          "trucks" : {
+            "$ref" : "#/components/schemas/TrucksMetrics"
+          },
+          "fleet" : {
+            "$ref" : "#/components/schemas/FleetMetrics"
+          },
+          "truck_operators" : {
+            "$ref" : "#/components/schemas/TruckOperatorsMetrics"
+          }
+        },
+        "example" : {
+          "date" : "2000-01-23",
+          "fleet" : {
+            "total" : 7,
+            "transit" : 9,
+            "available" : 2,
+            "not_available" : 4,
+            "loading" : 3,
+            "maintenance" : 7,
+            "accident" : 1
+          },
+          "truck_operators" : {
+            "liquidate" : 1,
+            "total" : 1,
+            "work_break" : 7,
+            "special_permission" : 5,
+            "available" : 6,
+            "vacation" : 9,
+            "training" : 4,
+            "disabled" : 9,
+            "operation" : 1
+          },
+          "trucks" : {
+            "loaded" : 6,
+            "loaded_vs_forecast" : 2.302136,
+            "positioned" : 1,
+            "required" : 0,
+            "loaded_vs_fleet" : 5.637377,
+            "no_scheduled_load" : 5
+          }
+        }
+      },
+      "TrucksMetrics" : {
+        "type" : "object",
+        "properties" : {
+          "required" : {
+            "type" : "integer",
+            "description" : "Total equipo requerido",
+            "format" : "int32"
+          },
+          "loaded" : {
+            "type" : "integer",
+            "description" : "Total equipo cargado",
+            "format" : "int32"
+          },
+          "positioned" : {
+            "type" : "integer",
+            "description" : "Total equipo posicionado",
+            "format" : "int32"
+          },
+          "no_scheduled_load" : {
+            "type" : "integer",
+            "description" : "Equipo sin programa de carga",
+            "format" : "int32"
+          },
+          "loaded_vs_fleet" : {
+            "type" : "number",
+            "description" : "Porcentaje de flota cargada",
+            "format" : "float"
+          },
+          "loaded_vs_forecast" : {
+            "type" : "number",
+            "description" : "Porcentaje Forecast vs Posicionado Cargado",
+            "format" : "float"
+          }
+        },
+        "example" : {
+          "loaded" : 6,
+          "loaded_vs_forecast" : 2.302136,
+          "positioned" : 1,
+          "required" : 0,
+          "loaded_vs_fleet" : 5.637377,
+          "no_scheduled_load" : 5
+        }
+      },
+      "FleetMetrics" : {
+        "type" : "object",
+        "properties" : {
+          "total" : {
+            "type" : "integer",
+            "description" : "Total",
+            "format" : "int32"
+          },
+          "transit" : {
+            "type" : "integer",
+            "description" : "En tránsito",
+            "format" : "int32"
+          },
+          "loading" : {
+            "type" : "integer",
+            "description" : "Cargando",
+            "format" : "int32"
+          },
+          "available" : {
+            "type" : "integer",
+            "description" : "Disponible en base sin asignacion",
+            "format" : "int32"
+          },
+          "not_available" : {
+            "type" : "integer",
+            "description" : "No disponbiles por taller",
+            "format" : "int32"
+          },
+          "maintenance" : {
+            "type" : "integer",
+            "description" : "En mantenimiento",
+            "format" : "int32"
+          },
+          "accident" : {
+            "type" : "integer",
+            "description" : "Accidentado",
+            "format" : "int32"
+          }
+        },
+        "example" : {
+          "total" : 7,
+          "transit" : 9,
+          "available" : 2,
+          "not_available" : 4,
+          "loading" : 3,
+          "maintenance" : 7,
+          "accident" : 1
+        }
+      },
+      "TruckOperatorsMetrics" : {
+        "type" : "object",
+        "properties" : {
+          "total" : {
+            "type" : "integer",
+            "description" : "Total",
+            "format" : "int32"
+          },
+          "operation" : {
+            "type" : "integer",
+            "description" : "En operación",
+            "format" : "int32"
+          },
+          "available" : {
+            "type" : "integer",
+            "description" : "Disponibles",
+            "format" : "int32"
+          },
+          "work_break" : {
+            "type" : "integer",
+            "description" : "En descanso",
+            "format" : "int32"
+          },
+          "liquidate" : {
+            "type" : "integer",
+            "description" : "Por liquidar",
+            "format" : "int32"
+          },
+          "training" : {
+            "type" : "integer",
+            "description" : "En capacitación",
+            "format" : "int32"
+          },
+          "special_permission" : {
+            "type" : "integer",
+            "description" : "Permisos Especiales",
+            "format" : "int32"
+          },
+          "disabled" : {
+            "type" : "integer",
+            "description" : "Incapacitado",
+            "format" : "int32"
+          },
+          "vacation" : {
+            "type" : "integer",
+            "description" : "En vacaciones",
+            "format" : "int32"
+          }
+        },
+        "example" : {
+          "liquidate" : 1,
+          "total" : 1,
+          "work_break" : 7,
+          "special_permission" : 5,
+          "available" : 6,
+          "vacation" : 9,
+          "training" : 4,
+          "disabled" : 9,
+          "operation" : 1
+        }
+      },
+      "LoadPlan" : {
+        "required" : [ "customer", "date", "market_type", "office", "vins" ],
+        "type" : "object",
+        "properties" : {
+          "market_type" : {
+            "type" : "integer",
+            "description" : "El id del tipo de mercado",
+            "format" : "int32"
+          },
+          "customer" : {
+            "type" : "integer",
+            "description" : "El id de este cliente",
+            "format" : "int32"
+          },
+          "office" : {
+            "type" : "integer",
+            "description" : "El id de la oficina",
+            "format" : "int32"
+          },
+          "date" : {
+            "type" : "string",
+            "description" : "Fecha programada",
+            "format" : "date"
+          },
+          "vins" : {
+            "$ref" : "#/components/schemas/VinsPlan"
+          }
+        },
+        "example" : {
+          "date" : "2000-01-23",
+          "office" : 1,
+          "market_type" : 0,
+          "customer" : 6,
+          "vins" : {
+            "loaded" : 2,
+            "positioned" : 5,
+            "planned" : 5
+          }
+        }
+      },
+      "TravelPlan" : {
+        "type" : "object",
+        "properties" : {
+          "date" : {
+            "type" : "string",
+            "description" : "Fecha programada",
+            "format" : "date"
+          },
+          "office_plans" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/OfficePlan"
+            }
+          }
+        },
+        "example" : {
+          "date" : "2000-01-23",
+          "office_plans" : [ {
+            "trucks_plan" : {
+              "arrivals" : [ null, null ],
+              "positioned" : [ "", "" ],
+              "completed" : true,
+              "demand" : [ {
+                "demand" : 6,
+                "customer" : 0
+              }, {
+                "demand" : 6,
+                "customer" : 0
+              } ]
+            },
+            "location" : ""
+          }, {
+            "trucks_plan" : {
+              "arrivals" : [ null, null ],
+              "positioned" : [ "", "" ],
+              "completed" : true,
+              "demand" : [ {
+                "demand" : 6,
+                "customer" : 0
+              }, {
+                "demand" : 6,
+                "customer" : 0
+              } ]
+            },
+            "location" : ""
+          } ]
+        }
+      },
+      "OfficePlan" : {
+        "type" : "object",
+        "properties" : {
+          "location" : {
+            "$ref" : "#/components/schemas/Location"
+          },
+          "trucks_plan" : {
+            "$ref" : "#/components/schemas/TrucksPlan"
+          }
+        },
+        "example" : {
+          "trucks_plan" : {
+            "arrivals" : [ null, null ],
+            "positioned" : [ "", "" ],
+            "completed" : true,
+            "demand" : [ {
+              "demand" : 6,
+              "customer" : 0
+            }, {
+              "demand" : 6,
+              "customer" : 0
+            } ]
+          },
+          "location" : ""
+        }
+      },
+      "TrucksPlan" : {
+        "type" : "object",
+        "properties" : {
+          "demand" : {
+            "type" : "array",
+            "description" : "Demanda",
+            "items" : {
+              "$ref" : "#/components/schemas/CustomerDemand"
+            }
+          },
+          "positioned" : {
+            "type" : "array",
+            "description" : "Posicionados",
+            "items" : {
+              "$ref" : "#/components/schemas/Truck"
+            }
+          },
+          "arrivals" : {
+            "type" : "array",
+            "description" : "Llegadas",
+            "items" : {
+              "$ref" : "#/components/schemas/Truck"
+            }
+          },
+          "completed" : {
+            "type" : "boolean",
+            "description" : "Completado",
+            "nullable" : false
+          }
+        },
+        "example" : {
+          "arrivals" : [ null, null ],
+          "positioned" : [ "", "" ],
+          "completed" : true,
+          "demand" : [ {
+            "demand" : 6,
+            "customer" : 0
+          }, {
+            "demand" : 6,
+            "customer" : 0
+          } ]
+        }
+      },
+      "CustomerDemand" : {
+        "type" : "object",
+        "properties" : {
+          "customer" : {
+            "type" : "integer",
+            "description" : "Cliente",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "demand" : {
+            "type" : "integer",
+            "description" : "Demanda",
+            "format" : "int32",
+            "nullable" : true
+          }
+        },
+        "example" : {
+          "demand" : 6,
+          "customer" : 0
+        }
+      },
+      "Truck" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/NamedEntity"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "tracking_id" : {
+              "type" : "integer",
+              "description" : "El id de seguimiento de la unidad",
+              "format" : "int32"
+            },
+            "type" : {
+              "type" : "integer",
+              "description" : "El id del tipo de unidad",
+              "format" : "int32"
+            },
+            "status" : {
+              "type" : "integer",
+              "description" : "El estatus del equipo"
+            },
+            "position" : {
+              "$ref" : "#/components/schemas/Position"
+            }
+          }
+        } ]
+      },
+      "Position" : {
+        "required" : [ "coordinates", "timestamp" ],
+        "type" : "object",
+        "properties" : {
+          "timestamp" : {
+            "type" : "string",
+            "description" : "Timestamp de esta posición",
+            "format" : "date-time",
+            "nullable" : false
+          },
+          "coordinates" : {
+            "$ref" : "#/components/schemas/Coordinates"
+          }
+        }
+      },
+      "VinsPlan" : {
+        "type" : "object",
+        "properties" : {
+          "planned" : {
+            "type" : "integer",
+            "description" : "Cantidad de Vins en el Plan",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "positioned" : {
+            "type" : "integer",
+            "description" : "Cantidad de Vins Posicionados",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "loaded" : {
+            "type" : "integer",
+            "description" : "Cantidad de Vins Cargados",
+            "format" : "int32",
+            "nullable" : true
+          }
+        },
+        "example" : {
+          "loaded" : 2,
+          "positioned" : 5,
+          "planned" : 5
+        }
+      },
+      "Coordinates" : {
+        "required" : [ "latitude", "longitude" ],
+        "type" : "object",
+        "properties" : {
+          "latitude" : {
+            "type" : "number",
+            "description" : "Latitud",
+            "format" : "double",
+            "nullable" : false
+          },
+          "longitude" : {
+            "type" : "number",
+            "description" : "Longitud",
+            "format" : "double",
+            "nullable" : false
+          }
+        },
+        "description" : "Las coordenadas de esta ubicación"
+      },
+      "Location" : {
+        "required" : [ "city", "coordinates", "description", "name" ],
+        "description" : "Representa un origen, un destino o un regreso",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/NamedEntity"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "city" : {
+              "type" : "integer",
+              "description" : "El id de la ciudad en la que se encuentra esta ubicación",
+              "format" : "int32"
+            },
+            "coordinates" : {
+              "$ref" : "#/components/schemas/Coordinates"
+            }
+          }
+        } ]
+      },
+      "LocationType" : {
+        "type" : "string",
+        "enum" : [ "origin", "destination", "office" ]
+      },
+      "TrafficPlan" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/BaseEntity"
+        }, {
+          "required" : [ "customer", "destination", "end_date", "market_type", "origin", "return_to", "start_date", "truck", "truck_operator" ],
+          "type" : "object",
+          "properties" : {
+            "market_type" : {
+              "$ref" : "#/components/schemas/NamedEntity"
+            },
+            "customer" : {
+              "$ref" : "#/components/schemas/NamedEntity"
+            },
+            "origin" : {
+              "$ref" : "#/components/schemas/Location"
+            },
+            "destination" : {
+              "$ref" : "#/components/schemas/Location"
+            },
+            "return_to" : {
+              "$ref" : "#/components/schemas/Location"
+            },
+            "start_date" : {
+              "type" : "string",
+              "description" : "Fecha de inicio",
+              "format" : "date"
+            },
+            "end_date" : {
+              "type" : "string",
+              "description" : "Fecha de regreso",
+              "format" : "date"
+            },
+            "truck" : {
+              "$ref" : "#/components/schemas/NamedEntity"
+            },
+            "truck_operator" : {
+              "$ref" : "#/components/schemas/NamedEntity"
+            },
+            "reason" : {
+              "type" : "string",
+              "description" : "Razón del movimiento"
+            }
+          }
+        } ]
+      },
+      "InternalTransfer" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/BaseEntity"
+        }, {
+          "required" : [ "approval_status", "comment", "trucks" ],
+          "type" : "object",
+          "properties" : {
+            "approval_status" : {
+              "type" : "integer",
+              "description" : "Estado de aprobación",
+              "format" : "int32",
+              "nullable" : true
+            },
+            "comment" : {
+              "type" : "string",
+              "description" : "Comentario"
+            },
+            "trucks" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/components/schemas/InternalTransferTruck"
+              }
+            }
+          }
+        } ]
+      },
+      "InternalTransferTruck" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/BaseEntity"
+        }, {
+          "required" : [ "destination", "origin", "truck" ],
+          "type" : "object",
+          "properties" : {
+            "truck" : {
+              "type" : "integer",
+              "description" : "El id del tráctor",
+              "format" : "int32",
+              "nullable" : true
+            },
+            "origin" : {
+              "type" : "integer",
+              "description" : "Origen",
+              "format" : "int32",
+              "nullable" : true
+            },
+            "destination" : {
+              "type" : "integer",
+              "description" : "Destino",
+              "format" : "int32",
+              "nullable" : true
+            }
+          }
+        } ]
+      },
+      "DataSeries" : {
+        "required" : [ "value" ],
+        "type" : "object",
+        "properties" : {
+          "value" : {
+            "type" : "number",
+            "description" : "Valor o coordenada en Y",
+            "format" : "double"
+          },
+          "date" : {
+            "type" : "string",
+            "description" : "Fecha o coordenada en X",
+            "format" : "date"
+          }
+        },
+        "description" : "Representa un elemento individual de una serie de datos en función del tiempo",
+        "example" : {
+          "date" : "2000-01-23",
+          "value" : 0.8008281904610115
+        }
+      },
+      "FleetLoadedVsEmpty" : {
+        "properties" : {
+          "fleet_loaded" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DataSeries"
+            }
+          },
+          "fleet_empty" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DataSeries"
+            }
+          }
+        },
+        "description" : "Serie de datos para la gráfica Cantidad de Flota Cargada vs Vacía",
+        "example" : {
+          "fleet_loaded" : [ {
+            "date" : "2000-01-23",
+            "value" : 0.8008281904610115
+          }, {
+            "date" : "2000-01-23",
+            "value" : 0.8008281904610115
+          } ],
+          "fleet_empty" : [ null, null ]
+        }
+      },
+      "ForecastVsReal" : {
+        "properties" : {
+          "forecast" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DataSeries"
+            }
+          },
+          "real" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DataSeries"
+            }
+          }
+        },
+        "description" : "Serie de datos para la gráfica Forecast vs Real",
+        "example" : {
+          "forecast" : [ {
+            "date" : "2000-01-23",
+            "value" : 0.8008281904610115
+          }, {
+            "date" : "2000-01-23",
+            "value" : 0.8008281904610115
+          } ],
+          "real" : [ null, null ]
+        }
+      },
+      "TripsMadeVsCancelled" : {
+        "properties" : {
+          "trips_made" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DataSeries"
+            }
+          },
+          "trips_cancelled" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DataSeries"
+            }
+          }
+        },
+        "description" : "Serie de datos para la gráfica Viajes Realizados vs Cancelados",
+        "example" : {
+          "trips_made" : [ {
+            "date" : "2000-01-23",
+            "value" : 0.8008281904610115
+          }, {
+            "date" : "2000-01-23",
+            "value" : 0.8008281904610115
+          } ],
+          "trips_cancelled" : [ null, null ]
+        }
+      },
+      "TrucksUsage" : {
+        "properties" : {
+          "trucks_usage" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DataSeries"
+            }
+          }
+        },
+        "description" : "Serie de datos para la gráfica Uso de Equipo Actual",
+        "example" : {
+          "trucks_usage" : [ {
+            "date" : "2000-01-23",
+            "value" : 0.8008281904610115
+          }, {
+            "date" : "2000-01-23",
+            "value" : 0.8008281904610115
+          } ]
+        }
+      }
+    },
+    "responses" : {
+      "OK" : {
+        "description" : "OK",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ProblemDetails"
+            }
+          }
+        }
+      },
+      "BadRequest" : {
+        "description" : "Bad Request",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ProblemDetails"
+            }
+          }
+        }
+      },
+      "Unauthorized" : {
+        "description" : "Unauthorized",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ProblemDetails"
+            }
+          }
+        }
+      },
+      "NotFound" : {
+        "description" : "Not Found",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ProblemDetails"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "Bearer" : {
+        "type" : "http",
+        "scheme" : "bearer",
+        "bearerFormat" : "JWT"
+      }
+    }
+  }
+}

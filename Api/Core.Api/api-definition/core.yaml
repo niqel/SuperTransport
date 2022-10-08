@@ -1,0 +1,5753 @@
+openapi: 3.0.1
+info:
+  title: Transportes Cuauhtémoc
+  description: Transportes Cuauhtémoc (ASP.NET Core 3.1)
+  termsOfService: http://www.tc.com.mx
+  contact:
+    name: Transportes Cuauhtémoc
+    url: http://www.tc.com.mx
+    email: 'support@tc.com.mx'
+  version: 1.0.0
+servers:
+  - url: /api/core
+paths:
+  /cities:
+    get:
+      tags:
+        - CitiesApi
+      summary: Obtiene las ciudades
+      parameters:
+        - name: active
+          in: query
+          description: Si se especifica filtra por estado habilitado o deshabilitado
+          schema:
+            type: boolean
+            description: Si se especifica filtra por estado habilitado o deshabilitado
+            nullable: true
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/City'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/City'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/City'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/City'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/City'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /cities/{id}/zone:
+    put:
+      tags:
+        - CitiesApi
+      summary: Asigna una zona a una ciudad
+      parameters:
+        - name: id
+          in: path
+          description: El id de la ciudad
+          required: true
+          schema:
+            type: integer
+            description: El id de la ciudad
+            format: int32
+        - name: zone
+          in: query
+          description: La zona a asignar
+          schema:
+            type: integer
+            description: La zona a asignar
+            format: int32
+            nullable: true
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            text/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        404:
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /customers:
+    get:
+      tags:
+        - CustomersApi
+      summary: Listado de clientes en el sistema
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /dashboard/forecast-vs-real:
+    get:
+      tags:
+        - DashboardApi
+      summary: Obtiene las series de datos para la gráfica Forecast vs Real
+      parameters:
+        - name: startDate
+          in: query
+          description: La primera fecha a consultar
+          schema:
+            type: string
+            description: La primera fecha a consultar
+            format: date-time
+            nullable: true
+        - name: endDate
+          in: query
+          description: La última fecha a consultar
+          schema:
+            type: string
+            description: La última fecha a consultar
+            format: date-time
+            nullable: true
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForecastVsReal'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForecastVsReal'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForecastVsReal'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForecastVsReal'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForecastVsReal'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /dashboard/fleet-loaded-vs-empty:
+    get:
+      tags:
+        - DashboardApi
+      summary: Obtiene las series de datos para la gráfica Cantidad de Flota Cargada vs Vacía
+      parameters:
+        - name: startDate
+          in: query
+          description: La primera fecha a consultar
+          schema:
+            type: string
+            description: La primera fecha a consultar
+            format: date-time
+            nullable: true
+        - name: endDate
+          in: query
+          description: La última fecha a consultar
+          schema:
+            type: string
+            description: La última fecha a consultar
+            format: date-time
+            nullable: true
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FleetLoadedVsEmpty'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FleetLoadedVsEmpty'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FleetLoadedVsEmpty'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/FleetLoadedVsEmpty'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/FleetLoadedVsEmpty'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /dashboard/trips-made-vs-cancelled:
+    get:
+      tags:
+        - DashboardApi
+      summary: Obtiene las series de datos para la gráfica Viajes Realizados vs Cancelados
+      parameters:
+        - name: startDate
+          in: query
+          description: La primera fecha a consultar
+          schema:
+            type: string
+            description: La primera fecha a consultar
+            format: date-time
+            nullable: true
+        - name: endDate
+          in: query
+          description: La última fecha a consultar
+          schema:
+            type: string
+            description: La última fecha a consultar
+            format: date-time
+            nullable: true
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TripsMadeVsCancelled'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TripsMadeVsCancelled'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TripsMadeVsCancelled'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TripsMadeVsCancelled'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TripsMadeVsCancelled'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /dashboard/trucks-usage:
+    get:
+      tags:
+        - DashboardApi
+      summary: Obtiene las series de datos para la gráfica Uso de Equipo Actual
+      parameters:
+        - name: startDate
+          in: query
+          description: La primera fecha a consultar
+          schema:
+            type: string
+            description: La primera fecha a consultar
+            format: date-time
+            nullable: true
+        - name: endDate
+          in: query
+          description: La última fecha a consultar
+          schema:
+            type: string
+            description: La última fecha a consultar
+            format: date-time
+            nullable: true
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TrucksUsage'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrucksUsage'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TrucksUsage'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TrucksUsage'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TrucksUsage'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /Department:
+    post:
+      tags:
+        - DepartmentApi
+      summary: Crea un nuevo departamento
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Department'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Department'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Department'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Department'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Department'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/Department'
+          application/*+xml:
+            schema:
+              $ref: '#/components/schemas/Department'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Department'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Department'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/Department'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+    get:
+      tags:
+        - DepartmentApi
+      summary: Listado de los departamentos
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Department'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Department'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Department'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Department'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Department'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /Department/{id}:
+    delete:
+      tags:
+        - DepartmentApi
+      summary: Elimina un Departamento
+      parameters:
+        - name: id
+          in: path
+          description: El id del departamento
+          required: true
+          schema:
+            type: integer
+            description: El id del departamento
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Department'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Department'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/Department'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        404:
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+    get:
+      tags:
+        - DepartmentApi
+      summary: Obtiene un departamento por id
+      parameters:
+        - name: id
+          in: path
+          description: El id del departamento
+          required: true
+          schema:
+            type: integer
+            description: El id del departamento
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Department'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Department'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/Department'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        404:
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+    put:
+      tags:
+        - DepartmentApi
+      summary: Actualiza el departamento
+      parameters:
+        - name: id
+          in: path
+          description: El id del del departamento
+          required: true
+          schema:
+            type: integer
+            description: El id del del departamento
+            format: int32
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Department'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Department'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Department'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Department'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Department'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/Department'
+          application/*+xml:
+            schema:
+              $ref: '#/components/schemas/Department'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Department'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Department'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/Department'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /general-parameters:
+    get:
+      tags:
+        - GeneralParametersApi
+      summary: Obtiene los parametros generales
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GeneralParameter'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GeneralParameter'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GeneralParameter'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GeneralParameter'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GeneralParameter'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /general-parameters/{id}:
+    put:
+      tags:
+        - GeneralParametersApi
+      summary: Actualiza un parametro general
+      parameters:
+        - name: id
+          in: path
+          description: El id del parametro general
+          required: true
+          schema:
+            type: integer
+            description: El id del parametro general
+            format: int32
+      requestBody:
+        description: El parametro general modificado
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/GeneralParameter'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GeneralParameter'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/GeneralParameter'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/GeneralParameter'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/GeneralParameter'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/GeneralParameter'
+          application/*+xml:
+            schema:
+              $ref: '#/components/schemas/GeneralParameter'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            text/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /general-parameters/{id}/history:
+    get:
+      tags:
+        - GeneralParametersApi
+      summary: Obtiene el historial de un parametro general
+      parameters:
+        - name: id
+          in: path
+          description: El id del del parametro general
+          required: true
+          schema:
+            type: integer
+            description: El id del del parametro general
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoryRecord'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoryRecord'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoryRecord'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoryRecord'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoryRecord'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /operators/{year}/{month}/metrics:
+    get:
+      tags:
+        - LoadPlansApi
+      summary: Obtiene las métricas de los operadores
+      parameters:
+        - name: year
+          in: path
+          description: El año del plan de carga
+          required: true
+          schema:
+            type: integer
+            description: El año del plan de carga
+            format: int32
+        - name: month
+          in: path
+          description: El mes del plan de carga
+          required: true
+          schema:
+            type: integer
+            description: El mes del plan de carga
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoadPlansMetrics'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoadPlansMetrics'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoadPlansMetrics'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoadPlansMetrics'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoadPlansMetrics'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /load-plans/{year}/{month}/metrics:
+    get:
+      tags:
+        - LoadPlansApi
+      summary: Obtiene las métricas del plan de carga
+      parameters:
+        - name: year
+          in: path
+          description: El año del plan de carga
+          required: true
+          schema:
+            type: integer
+            description: El año del plan de carga
+            format: int32
+        - name: month
+          in: path
+          description: El mes del plan de carga
+          required: true
+          schema:
+            type: integer
+            description: El mes del plan de carga
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoadPlansMetrics'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoadPlansMetrics'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoadPlansMetrics'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoadPlansMetrics'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoadPlansMetrics'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /fleet/{year}/{month}/metrics:
+    get:
+      tags:
+        - LoadPlansApi
+      summary: Obtiene las métricas de los tractores
+      parameters:
+        - name: year
+          in: path
+          description: El año del plan de carga
+          required: true
+          schema:
+            type: integer
+            description: El año del plan de carga
+            format: int32
+        - name: month
+          in: path
+          description: El mes del plan de carga
+          required: true
+          schema:
+            type: integer
+            description: El mes del plan de carga
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoadPlansMetrics'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoadPlansMetrics'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoadPlansMetrics'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoadPlansMetrics'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoadPlansMetrics'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /load-plans/ultimaActualizacion:
+    get:
+      tags:
+        - LoadPlansApi
+      summary: Obtiene la fecha de actualización
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UltimaActualizacion'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoadPlansMetrics'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoadPlansMetrics'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoadPlansMetrics'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoadPlansMetrics'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /market-types:
+    get:
+      tags:
+        - MarketTypesApi
+      summary: Obtiene los tipos de mercado
+      parameters:
+        - name: active
+          in: query
+          description: Si se especifica filtra por estado habilitado o deshabilitado
+          schema:
+            type: boolean
+            description: Si se especifica filtra por estado habilitado o deshabilitado
+            nullable: true
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MarketType'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MarketType'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MarketType'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MarketType'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MarketType'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+    post:
+      tags:
+        - MarketTypesApi
+      summary: Añade un tipo de mercado
+      requestBody:
+        description: El tipo de mercado a añadir
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/MarketType'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MarketType'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MarketType'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/MarketType'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MarketType'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MarketType'
+          application/*+xml:
+            schema:
+              $ref: '#/components/schemas/MarketType'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            text/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /market-types/{id}:
+    put:
+      tags:
+        - MarketTypesApi
+      summary: Actualiza un tipo de mercado
+      parameters:
+        - name: id
+          in: path
+          description: El id del tipo de mercado
+          required: true
+          schema:
+            type: integer
+            description: El id del tipo de mercado
+            format: int32
+      requestBody:
+        description: El tipo de mercado modificado
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/MarketType'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MarketType'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MarketType'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/MarketType'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MarketType'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/MarketType'
+          application/*+xml:
+            schema:
+              $ref: '#/components/schemas/MarketType'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            text/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        404:
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+    delete:
+      tags:
+        - MarketTypesApi
+      summary: Deshabilita un tipo de mercado
+      parameters:
+        - name: id
+          in: path
+          description: El id del tipo de mercado
+          required: true
+          schema:
+            type: integer
+            description: El id del tipo de mercado
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            text/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        404:
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /modules:
+    get:
+      tags:
+        - ModulesApi
+      summary: Obtiene los modulos
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Module'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Module'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Module'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Module'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Module'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /modules/{id}/functionalities:
+    get:
+      tags:
+        - ModulesApi
+      summary: Obtiene las funcionalidades de un modulo
+      parameters:
+        - name: id
+          in: path
+          description: El id del modulo al que pertenece la funcionalidad
+          required: true
+          schema:
+            type: integer
+            description: El id del modulo al que pertenece la funcionalidad
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Functionality'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Functionality'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Functionality'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Functionality'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Functionality'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /permissions:
+    get:
+      tags:
+        - PermissionsApi
+      summary: Obtiene los permisos
+      parameters:
+        - name: role
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: module
+          in: query
+          schema:
+            type: integer
+            format: int32
+            nullable: true
+        - name: functionality
+          in: query
+          schema:
+            type: integer
+            format: int32
+            nullable: true
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PermisosRol'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PermisosRol'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PermisosRol'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PermisosRol'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PermisosRol'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+    post:
+      tags:
+        - PermissionsApi
+      summary: Añade un permiso
+      requestBody:
+        description: El permiso a añadir
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/PermisosRol'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PermisosRol'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/PermisosRol'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/PermisosRol'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/PermisosRol'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/PermisosRol'
+          application/*+xml:
+            schema:
+              $ref: '#/components/schemas/PermisosRol'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            text/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+    put:
+      tags:
+        - PermissionsApi
+      summary: Crea o actualiza un permiso
+      requestBody:
+        description: El permiso
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/PermisosRol'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PermisosRol'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/PermisosRol'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/PermisosRol'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/PermisosRol'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/PermisosRol'
+          application/*+xml:
+            schema:
+              $ref: '#/components/schemas/PermisosRol'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            text/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        404:
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /permissions/{id}/history:
+    get:
+      tags:
+        - PermissionsApi
+      summary: Obtiene el historial de un permiso
+      parameters:
+        - name: id
+          in: path
+          description: El id del permiso
+          required: true
+          schema:
+            type: integer
+            description: El id del permiso
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoryRecord'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoryRecord'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoryRecord'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoryRecord'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoryRecord'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        404:
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /permissions/{id}:
+    delete:
+      tags:
+        - PermissionsApi
+      summary: Elimina un permiso
+      parameters:
+        - name: id
+          in: path
+          description: El id del permiso
+          required: true
+          schema:
+            type: integer
+            description: El id del permiso
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            text/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        404:
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /roles:
+    get:
+      tags:
+        - RolesApi
+      summary: Obtiene los roles
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Role'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Role'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Role'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Role'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Role'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+    post:
+      tags:
+        - RolesApi
+      summary: Añade un rol
+      requestBody:
+        description: El rol a añadir
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Role'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Role'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Role'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Role'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Role'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/Role'
+          application/*+xml:
+            schema:
+              $ref: '#/components/schemas/Role'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            text/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /roles/{id}:
+    put:
+      tags:
+        - RolesApi
+      summary: Actualiza un rol
+      parameters:
+        - name: id
+          in: path
+          description: El id del rol
+          required: true
+          schema:
+            type: integer
+            description: El id del rol
+            format: int32
+      requestBody:
+        description: El rol modificado
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Role'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Role'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Role'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Role'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Role'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/Role'
+          application/*+xml:
+            schema:
+              $ref: '#/components/schemas/Role'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            text/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        404:
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+    delete:
+      tags:
+        - RolesApi
+      summary: Elimina un rol
+      parameters:
+        - name: id
+          in: path
+          description: El id del rol
+          required: true
+          schema:
+            type: integer
+            description: El id del rol
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            text/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        404:
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /roles/{id}/history:
+    get:
+      tags:
+        - RolesApi
+      summary: Obtiene el historial de un rol
+      parameters:
+        - name: id
+          in: path
+          description: El id del rol
+          required: true
+          schema:
+            type: integer
+            description: El id del rol
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoryRecord'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoryRecord'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoryRecord'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoryRecord'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoryRecord'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /sessions:
+    post:
+      tags:
+        - SessionsApi
+      summary: Crea una nueva sesión
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Login'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Login'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Login'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/Login'
+          application/*+xml:
+            schema:
+              $ref: '#/components/schemas/Login'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Session'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Session'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/Session'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+    delete:
+      tags:
+        - SessionsApi
+      summary: Cierra la sesión actual
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            text/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /survey/{id}:
+    get:
+      tags:
+        - SurveyApi
+      summary: Obtener de encuestas del operador
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            text/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /survey/answer:
+    post:
+      tags:
+        - SurveyApi
+      summary: Agrega el resultado de una encuesta
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Answer'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Answer'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Answer'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Answer'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Answer'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/Answer'
+          application/*+xml:
+            schema:
+              $ref: '#/components/schemas/Answer'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            text/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /survey/qualification:
+    get:
+      tags:
+        - SurveyApi
+      summary: Listado de las calificaciones
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Qualification'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Qualification'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Qualification'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Qualification'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/Qualification'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /system-parameters:
+    get:
+      tags:
+        - SystemParametersApi
+      summary: Obtiene los parametros del sistema
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ParametroSistemaCustom'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ParametroSistemaCustom'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ParametroSistemaCustom'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ParametroSistemaCustom'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ParametroSistemaCustom'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+    put:
+      tags:
+        - SystemParametersApi
+      summary: Actualiza un parametro del sistema
+      requestBody:
+        description: El parametro del sistema modificado
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ParametroSistemaCustom'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ParametroSistemaCustom'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ParametroSistemaCustom'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ParametroSistemaCustom'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ParametroSistemaCustom'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ParametroSistemaCustom'
+          application/*+xml:
+            schema:
+              $ref: '#/components/schemas/ParametroSistemaCustom'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            text/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /system-parameters/history:
+    get:
+      tags:
+        - SystemParametersApi
+      summary: Obtiene el historial de un parametro del sistema
+      parameters:
+        - name: modulo
+          in: query
+          description: El modulo del parametro del sistema
+          required: true
+          schema:
+            type: string
+            description: El modulo del parametro del sistema
+        - name: nombre
+          in: query
+          description: El nombre del parametro del sistema
+          required: true
+          schema:
+            type: string
+            description: El nombre del parametro del sistema
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoryRecord'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoryRecord'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoryRecord'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoryRecord'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoryRecord'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /support/change-password:
+    patch:
+      tags:
+        - TechnicalSupportApi
+      summary: Cambiar contraseña del operador
+      parameters:
+        - name: type
+          in: query
+          description: ''
+          required: true
+          schema:
+            $ref: '#/components/schemas/LocationType'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            text/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /support/restore-password:
+    patch:
+      tags:
+        - TechnicalSupportApi
+      summary: Restaurar contraseña del operador
+      parameters:
+        - name: type
+          in: query
+          description: ''
+          required: true
+          schema:
+            $ref: '#/components/schemas/LocationType'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            text/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /users:
+    post:
+      tags:
+        - UsersApi
+      summary: Crea un nuevo usuario
+      parameters:
+        - name: password
+          in: query
+          description: El hash de la contraseña del usuario
+          required: true
+          schema:
+            type: string
+            description: El hash de la contraseña del usuario
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/User'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/*+xml:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/User'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/User'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/User'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+    get:
+      tags:
+        - UsersApi
+      summary: Listado de usuarios en el sistema
+      parameters:
+        - name: group
+          in: query
+          description: ID del grupo a incluir en el listado
+          schema:
+            type: integer
+            description: ID del grupo a incluir en el listado
+            format: int32
+            nullable: true
+        - name: tipo
+          in: query
+          description: Tipo de usuarios a incluir en el listado
+          schema:
+            type: integer
+            description: Tipo de usuarios a incluir en el listado
+            format: int32
+            nullable: true
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /users/{id}:
+    delete:
+      tags:
+        - UsersApi
+      summary: Desactiva la cuenta de un usuario
+      parameters:
+        - name: id
+          in: path
+          description: El id del usuario
+          required: true
+          schema:
+            type: integer
+            description: El id del usuario
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/User'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/User'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/User'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/User'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        404:
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+    get:
+      tags:
+        - UsersApi
+      summary: Obtiene un usuario
+      parameters:
+        - name: id
+          in: path
+          description: El id del usuario
+          required: true
+          schema:
+            type: integer
+            description: El id del usuario
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/User'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/User'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/User'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/User'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        404:
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+    put:
+      tags:
+        - UsersApi
+      summary: Actualiza un usuario
+      parameters:
+        - name: id
+          in: path
+          description: El id del usuario
+          required: true
+          schema:
+            type: integer
+            description: El id del usuario
+            format: int32
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/User'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/*+xml:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/User'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/User'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/User'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /users/{id}/permissions:
+    get:
+      tags:
+        - UsersApi
+      summary: Obtiene los permisos de un usuario
+      parameters:
+        - name: id
+          in: path
+          description: El id del usuario
+          required: true
+          schema:
+            type: integer
+            description: El id del usuario
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PermisosUsuario'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PermisosUsuario'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PermisosUsuario'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PermisosUsuario'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PermisosUsuario'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        404:
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /users/types:
+    get:
+      tags:
+        - UsersApi
+      summary: Listado de tipos de usuarios en el sistema
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserTypes'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserTypes'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserTypes'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserTypes'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserTypes'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /users/password/{id}:
+    put:
+      tags:
+        - UsersApi
+      summary: Actualiza la contraseña de un usuario
+      operationId: UpdateUserPassword
+      parameters:
+        - name: id
+          in: path
+          description: El id del usuario
+          required: true
+          schema:
+            type: integer
+            description: El id del usuario
+            format: int32
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              type: object
+              description: 'La contraseña del usuario'
+              properties:
+                password:
+                  type: string
+                  format: string
+              nullable: true
+          application/json:
+            schema:
+              type: object
+              description: 'La contraseña del usuario'
+              properties:
+                password:
+                  type: string
+                  format: string
+              nullable: true
+          text/json:
+            schema:
+              type: object
+              description: 'La contraseña del usuario'
+              properties:
+                password:
+                  type: string
+                  format: string
+              nullable: true
+          application/*+json:
+            schema:
+              type: object
+              description: 'La contraseña del usuario'
+              properties:
+                password:
+                  type: string
+                  format: string
+              nullable: true
+          application/xml:
+            schema:
+              type: string
+              description: 'La contraseña del usuario'
+              properties:
+                password:
+                  type: string
+                  format: string
+              nullable: true
+          text/xml:
+            schema:
+              type: string
+              description: 'La contraseña del usuario'
+              properties:
+                password:
+                  type: string
+                  format: string
+              nullable: true
+          application/*+xml:
+            schema:
+              type: string
+              description: 'La contraseña del usuario'
+              properties:
+                password:
+                  type: string
+                  format: string
+              nullable: true
+      responses:
+        200:
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: object
+                $ref: '#/components/schemas/UserUpdatePassword'
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/UserUpdatePassword'
+            text/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/UserUpdatePassword'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/UserUpdatePassword'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/UserUpdatePassword'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        404:
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /users/operator-profile/{id}:
+    get:
+      tags:
+        - UsersApi
+      summary: Consulta de perfil del operador
+      operationId: GetOperatorProfileById
+      parameters:
+        - name: id
+          in: path
+          description: Id del usuario
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OperatorProfile'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperatorProfile'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperatorProfile'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/OperatorProfile'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/OperatorProfile'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        404:
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /zones:
+    get:
+      tags:
+        - ZonesApi
+      summary: Obtiene las zonas
+      parameters:
+        - name: active
+          in: query
+          description: Si se especifica filtra por estado habilitado o deshabilitado
+          schema:
+            type: boolean
+            description: Si se especifica filtra por estado habilitado o deshabilitado
+            nullable: true
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Zone'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Zone'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Zone'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Zone'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Zone'
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+    post:
+      tags:
+        - ZonesApi
+      summary: Añade una Zona
+      requestBody:
+        description: La zona a añadir
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Zone'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Zone'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Zone'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Zone'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Zone'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/Zone'
+          application/*+xml:
+            schema:
+              $ref: '#/components/schemas/Zone'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            text/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /zones/{id}:
+    put:
+      tags:
+        - ZonesApi
+      summary: Actualiza una zona
+      parameters:
+        - name: id
+          in: path
+          description: El id de la zona
+          required: true
+          schema:
+            type: integer
+            description: El id de la zona
+            format: int32
+      requestBody:
+        description: El tipo de mercado modificado
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Zone'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Zone'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Zone'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Zone'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Zone'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/Zone'
+          application/*+xml:
+            schema:
+              $ref: '#/components/schemas/Zone'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            text/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        404:
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+    delete:
+      tags:
+        - ZonesApi
+      summary: Elimina una Zona
+      parameters:
+        - name: id
+          in: path
+          description: El id del tipo de la zona
+          required: true
+          schema:
+            type: integer
+            description: El id del tipo de la zona
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+            text/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: false
+                description: ''
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        404:
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+components:
+  schemas:
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          nullable:  true
+        title:
+          type: string
+          nullable:  true
+        status:
+          type: integer
+          nullable:  true
+        detail:
+          type: string
+          format: int32
+          nullable:  true
+        instance:
+          type: string
+          nullable:  true
+      additionalProperties: {}
+    City:
+      required:
+        - active
+        - description
+        - latitude
+        - longitude
+        - name
+        - zone
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+          nullable: true
+        name:
+          type: string
+        description:
+          type: string
+        latitude:
+          type: string
+        longitude:
+          type: string
+        zone:
+          type: integer
+          format: int32
+        active:
+          type: boolean
+      additionalProperties: false
+    Customer:
+      required:
+        - id
+        - name
+      type: object
+      properties:
+        id:
+          type: integer
+          description: El id de este cliente
+          format: int32
+        name:
+          type: string
+          description: El nombre del cliente
+        description:
+          type: string
+          description: El alias del cliente
+          nullable: true
+        logo:
+          type: string
+          description: Gets or Sets Logo
+          format: byte
+          nullable: true
+      additionalProperties: false
+      description: ''
+    DataSeries:
+      required:
+        - value
+      type: object
+      properties:
+        value:
+          type: number
+          description: Valor o coordenada en Y
+          format: double
+        date:
+          type: string
+          description: Fecha o coordenada en X
+          format: date-time
+          nullable: true
+      additionalProperties: false
+      description: Representa un elemento individual de una serie de datos en función del tiempo
+    ForecastVsReal:
+      type: object
+      properties:
+        market_type:
+          type: integer
+          description: El id del tipo de mercado
+          format: int32
+        customer:
+          type: integer
+          description: El id del cliente
+          format: int32
+        office:
+          type: integer
+          description: El id de la oficina
+          format: int32
+        date:
+          type: string
+          description: fecha
+          format: Date
+        vins_planned:
+          type: integer
+          description: los viajes planeados
+          format: int32
+        vins_loaded:
+          type: integer
+          description: los viajes cargados
+          format: int32
+        vins_positioned:
+          type: integer
+          description: los viajes posicionados
+          format: int32
+      additionalProperties: false
+      description: Serie de datos para la gráfica Forecast vs Real
+    FleetLoadedVsEmpty:
+      type: object
+      properties:
+       fecha:
+          type: string
+          description: Fecha del movimiento
+          format: Date
+       truck_statusid:
+          type: integer
+          description: Estatus del tractor
+          format: int32
+       truckid:
+          type: integer
+          description: Id del tractor
+          format: int32
+       cargado:
+          type: string
+          description: Texto que determina si está o no cargado
+       name:
+          type: string
+          description: Nombre del tractor
+       description:
+          type: string
+          description: Descripción del tractor
+       given_name:
+          type: string
+          description: Nombre del operador
+    TripsMadeVsCancelled:
+      type: object
+      properties:
+        trips_made:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataSeries'
+          description: Gets or Sets TripsMade
+          nullable: true
+        trips_cancelled:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataSeries'
+          description: Gets or Sets TripsCancelled
+          nullable: true
+      additionalProperties: false
+      description: Serie de datos para la gráfica Viajes Realizados vs Cancelados
+    TrucksUsage:
+      type: object
+      properties:
+        trucks_usage:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataSeries'
+          description: Gets or Sets _TrucksUsage
+          nullable: true
+      additionalProperties: false
+      description: Serie de datos para la gráfica Uso de Equipo Actual
+    Department:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Gets or Sets Id
+          format: int32
+          nullable: true
+        key:
+          type: string
+          description: Gets or Sets Key
+          nullable: true
+        name:
+          type: string
+          description: Gets or Sets Name
+          nullable: true
+        description:
+          type: string
+          description: Gets or Sets Description
+          nullable: true
+        details:
+          type: string
+          description: Gets or Sets Active
+          nullable: true
+        active:
+          type: boolean
+          description: Gets or Sets Active
+          nullable: true
+        created_by:
+          type: integer
+          description: Gets or Sets CreatedBy
+          format: int32
+          nullable: true
+        created_at:
+          type: string
+          description: Gets or Sets CreatedAt
+          format: date-time
+          nullable: true
+        updated_by:
+          type: integer
+          description: Gets or Sets UpdatedBy
+          format: int32
+          nullable: true
+        updated_at:
+          type: string
+          description: Gets or Sets UpdatedAt
+          format: date-time
+          nullable: true
+      additionalProperties: false
+      description: Objeto departamento
+    GeneralParameter:
+      required:
+        - active
+        - created_at
+        - created_by
+        - description
+        - module
+        - name
+        - order
+        - regex
+        - updated_at
+        - updated_by
+        - value
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        module:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        regex:
+          type: string
+        order:
+          type: integer
+          format: int32
+        value:
+          type: string
+        active:
+          type: boolean
+        created_by:
+          type: integer
+          format: int32
+        created_at:
+          type: string
+          format: date-time
+        updated_by:
+          type: integer
+          format: int32
+        updated_at:
+          type: string
+          format: date-time
+      additionalProperties: false
+    HistoryRecord:
+      required:
+        - current
+        - date
+        - previous
+        - user
+      type: object
+      properties:
+        previous:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties: false
+          readOnly: true
+        current:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties: false
+          readOnly: true
+        user:
+          type: string
+        date:
+          type: string
+          format: date-time
+      additionalProperties: false
+    TrucksMetrics:
+      type: object
+      properties:
+        required:
+          type: integer
+          description: Total equipo requerido
+          format: int32
+          nullable: true
+        loaded:
+          type: integer
+          description: Total equipo cargado
+          format: int32
+          nullable: true
+        positioned:
+          type: integer
+          description: Total equipo posicionado
+          format: int32
+          nullable: true
+        no_scheduled_load:
+          type: integer
+          description: Equipo sin programa de carga
+          format: int32
+          nullable: true
+        loaded_vs_fleet:
+          type: number
+          description: Porcentaje de flota cargada
+          format: float
+          nullable: true
+        loaded_vs_forecast:
+          type: number
+          description: Porcentaje Forecast vs Posicionado Cargado
+          format: float
+          nullable: true
+      additionalProperties: false
+      description: ''
+    FleetMetrics:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total
+          format: int32
+          nullable: true
+        transit:
+          type: integer
+          description: En tránsito
+          format: int32
+          nullable: true
+        loading:
+          type: integer
+          description: Cargando
+          format: int32
+          nullable: true
+        available:
+          type: integer
+          description: Disponible en base sin asignacion
+          format: int32
+          nullable: true
+        not_available:
+          type: integer
+          description: No disponbiles por taller
+          format: int32
+          nullable: true
+        maintenance:
+          type: integer
+          description: En mantenimiento
+          format: int32
+          nullable: true
+        accident:
+          type: integer
+          description: Accidentado
+          format: int32
+          nullable: true
+      additionalProperties: false
+      description: ''
+    TruckOperatorsMetrics:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total
+          format: int32
+          nullable: true
+        operation:
+          type: integer
+          description: En operación
+          format: int32
+          nullable: true
+        available:
+          type: integer
+          description: Disponibles
+          format: int32
+          nullable: true
+        work_break:
+          type: integer
+          description: En descanso
+          format: int32
+          nullable: true
+        liquidate:
+          type: integer
+          description: Por liquidar
+          format: int32
+          nullable: true
+        training:
+          type: integer
+          description: En capacitación
+          format: int32
+          nullable: true
+        special_permission:
+          type: integer
+          description: Permisos Especiales
+          format: int32
+          nullable: true
+        disabled:
+          type: integer
+          description: Incapacitado
+          format: int32
+          nullable: true
+        vacation:
+          type: integer
+          description: En vacaciones
+          format: int32
+          nullable: true
+      additionalProperties: false
+      description: ''
+    LoadPlansMetrics:
+      required:
+        - date
+        - fleet
+        - truck_operators
+        - trucks
+      type: object
+      properties:
+        date:
+          type: string
+          description: Fecha
+          format: date-time
+        trucks:
+          $ref: '#/components/schemas/TrucksMetrics'
+        fleet:
+          $ref: '#/components/schemas/FleetMetrics'
+        truck_operators:
+          $ref: '#/components/schemas/TruckOperatorsMetrics'
+      additionalProperties: false
+      description: ''
+    UltimaActualizacion:
+      type: object
+      properties: 
+        fecha:
+          type: string
+          format: date-time
+    MarketType:
+      required:
+        - active
+        - description
+        - name
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+          nullable: true
+        name:
+          type: string
+        description:
+          type: string
+        active:
+          type: boolean
+      additionalProperties: false
+    Module:
+      required:
+        - active
+        - created_at
+        - created_by
+        - id
+        - name
+        - updated_at
+        - updated_by
+      type: object
+      properties:
+        id:
+          type: integer
+          description: El id de esta entidad
+          format: int32
+        name:
+          type: string
+          description: El nombre descriptivo de esta entidad
+        active:
+          type: boolean
+          description: La entidad se encuentra activa
+        created_by:
+          type: integer
+          description: El id del usuario que creo esta entidad
+          format: int32
+        created_at:
+          type: string
+          description: La fecha de creación de la entidad
+          format: date-time
+        updated_by:
+          type: integer
+          description: El id del último usuario que actualizo esta entidad
+          format: int32
+        updated_at:
+          type: string
+          description: La fecha de la última actualización de la entidad
+          format: date-time
+      additionalProperties: false
+      description: ''
+    Functionality:
+      required:
+        - active
+        - created_at
+        - created_by
+        - id
+        - name
+        - parent
+        - updated_at
+        - updated_by
+      type: object
+      properties:
+        parent:
+          type: integer
+          format: int32
+        id:
+          type: integer
+          description: El id de esta entidad
+          format: int32
+        name:
+          type: string
+          description: El nombre descriptivo de esta entidad
+        active:
+          type: boolean
+          description: La entidad se encuentra activa
+        created_by:
+          type: integer
+          description: El id del usuario que creo esta entidad
+          format: int32
+        created_at:
+          type: string
+          description: La fecha de creación de la entidad
+          format: date-time
+        updated_by:
+          type: integer
+          description: El id del último usuario que actualizo esta entidad
+          format: int32
+        updated_at:
+          type: string
+          description: La fecha de la última actualización de la entidad
+          format: date-time
+      additionalProperties: false
+      description: ''
+    PermisosRol:
+      type: object
+      properties:
+        usuariosId:
+          type: integer
+          format: int32
+        rolesId:
+          type: integer
+          format: int32
+        nombreRol:
+          type: string
+          nullable: true
+        idModulo:
+          type: integer
+          format: int32
+        nombreModulo:
+          type: string
+          nullable: true
+        descripcionModulo:
+          type: string
+          nullable: true
+        idFuncionalidad:
+          type: integer
+          format: int32
+        nombreFuncionalidad:
+          type: string
+          nullable: true
+        idPermiso:
+          type: integer
+          format: int32
+          nullable: true
+        funcionalidadPadre:
+          type: integer
+          format: int32
+          nullable: true
+        leer:
+          type: integer
+          format: int32
+        escribir:
+          type: integer
+          format: int32
+        ejecutar:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Role:
+      required:
+        - active
+        - created_at
+        - created_by
+        - description
+        - id
+        - id_active_directory
+        - name
+        - updated_at
+        - updated_by
+      type: object
+      properties:
+        description:
+          type: string
+          description: La descripción de esta entidad
+        id_active_directory:
+          type: string
+          description: El identificador del directorio activo
+        id:
+          type: integer
+          description: El id de esta entidad
+          format: int32
+        name:
+          type: string
+          description: El nombre descriptivo de esta entidad
+        active:
+          type: boolean
+          description: La entidad se encuentra activa
+        created_by:
+          type: integer
+          description: El id del usuario que creo esta entidad
+          format: int32
+        created_at:
+          type: string
+          description: La fecha de creación de la entidad
+          format: date-time
+        updated_by:
+          type: integer
+          description: El id del último usuario que actualizo esta entidad
+          format: int32
+        updated_at:
+          type: string
+          description: La fecha de la última actualización de la entidad
+          format: date-time
+      additionalProperties: false
+      description: ''
+    Login:
+      required:
+        - email
+        - password
+      type: object
+      properties:
+        email:
+          type: string
+          description: El correo del usuario
+        password:
+          type: string
+          description: la contraseña del usuario
+      additionalProperties: false
+      description: ''
+    User:
+      required:
+        - active
+        - created_at
+        - created_by
+        - email
+        - given_name
+        - id
+        - image
+        - isFirstLogin
+        - maternal_surname
+        - name
+        - paternal_surname
+        - role_id
+        - roles
+        - updated_at
+        - updated_by
+      type: object
+      properties:
+        given_name:
+          type: string
+          description: Gets or Sets GivenName
+        paternal_surname:
+          type: string
+          description: Gets or Sets PaternalSurname
+        maternal_surname:
+          type: string
+          description: Gets or Sets MaternalSurname
+        image:
+          type: string
+          description: Gets or Sets Image
+          format: byte
+        role_id:
+          type: integer
+          description: El id del rol de usuario
+          format: int32
+        email:
+          type: string
+          description: El email del usuario
+        isFirstLogin:
+          type: boolean
+          description: Determina si es la primera vez que se usa la aplicación
+        roles:
+          type: array
+          items:
+            type: string
+          description: Los id de grupo en los que se encuentra el usuario
+        id:
+          type: integer
+          description: El id de esta entidad
+          format: int32
+        name:
+          type: string
+          description: El nombre descriptivo de esta entidad
+        active:
+          type: boolean
+          description: La entidad se encuentra activa
+        created_by:
+          type: integer
+          description: El id del usuario que creo esta entidad
+          format: int32
+        created_at:
+          type: string
+          description: La fecha de creación de la entidad
+          format: date-time
+        updated_by:
+          type: integer
+          description: El id del último usuario que actualizo esta entidad
+          format: int32
+        updated_at:
+          type: string
+          description: La fecha de la última actualización de la entidad
+          format: date-time
+      additionalProperties: false
+      description: ''
+    UserUpdatePassword:
+        type: object
+        properties:
+          code:
+            description: Status Code
+            type: integer
+            format: int32
+          message: 
+            description: Descripcion de respuesta
+            type: string
+            format: string
+          data:
+            type: object
+            properties:
+              result:
+                description: Contraseña actualizada con exito
+                type: boolean
+    Session:
+      required:
+        - message
+        - token
+        - user
+      type: object
+      properties:
+        token:
+          type: string
+          description: El token de autorización para las peticiones
+        expires:
+          type: string
+          description: El momento en el que expirara el token
+          format: date-time
+          nullable: true
+        user:
+          $ref: '#/components/schemas/User'
+        message:
+          type: string
+          description: Gets or Sets Message
+      additionalProperties: false
+      description: ''
+    Survey:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        questions:
+          type: string
+          nullable: true
+        active:
+          type: boolean
+        createdBy:
+          type: integer
+          format: int32
+        createdAt:
+          type: string
+          format: date-time
+        updatedBy:
+          type: integer
+          format: int32
+        updatedAt:
+          type: string
+          format: date-time
+      additionalProperties: false
+    Answer:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Gets or Sets Id
+          format: int32
+          nullable: true
+        non_budgeted_expense_id:
+          type: integer
+          description: Gets or Sets NonBudgetedExpenseId
+          format: int32
+          nullable: true
+        answers:
+          type: string
+          description: Gets or Sets Answers
+          nullable: true
+      additionalProperties: false
+      description: ''
+    Qualification:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Gets or Sets Id
+          format: int32
+          nullable: true
+        description:
+          type: string
+          description: Gets or Sets Description
+          nullable: true
+        value:
+          type: integer
+          description: Gets or Sets Value
+          format: int32
+          nullable: true
+      additionalProperties: false
+      description: Es la calificacion de la encuesta
+    ParametroSistemaCustom:
+      type: object
+      properties:
+        modulo:
+          type: string
+          nullable: true
+        nombre:
+          type: string
+          nullable: true
+        descripcion:
+          type: string
+          nullable: true
+        orden:
+          type: integer
+          format: int32
+          nullable: true
+        password:
+          type: boolean
+        valor:
+          type: string
+          nullable: true
+        regex:
+          type: string
+          nullable: true
+        longitud:
+          type: integer
+          format: int32
+          nullable: true
+      additionalProperties: false
+    LocationType:
+      enum:
+        - origin
+        - destination
+        - office
+      type: string
+      description: Gets or Sets LocationType
+    PermisosUsuario:
+      type: object
+      properties:
+        usuariosId:
+          type: integer
+          format: int32
+        idModulo:
+          type: integer
+          format: int32
+        nombreModulo:
+          type: string
+          nullable: true
+        descripcionModulo:
+          type: string
+          nullable: true
+        idFuncionalidad:
+          type: integer
+          format: int32
+        nombreFuncionalidad:
+          type: string
+          nullable: true
+        leer:
+          type: boolean
+        escribir:
+          type: boolean
+        ejecutar:
+          type: boolean
+      additionalProperties: false
+    UserTypes:
+      required:
+        - active
+        - created_at
+        - created_by
+        - id
+        - name
+        - updated_at
+        - updated_by
+      type: object
+      properties:
+        id:
+          type: integer
+          description: El id de esta entidad
+          format: int32
+        name:
+          type: string
+          description: El nombre descriptivo de esta entidad
+        active:
+          type: boolean
+          description: La entidad se encuentra activa
+        created_by:
+          type: integer
+          description: El id del usuario que creo esta entidad
+          format: int32
+        created_at:
+          type: string
+          description: La fecha de creación de la entidad
+          format: date-time
+        updated_by:
+          type: integer
+          description: El id del último usuario que actualizo esta entidad
+          format: int32
+        updated_at:
+          type: string
+          description: La fecha de la última actualización de la entidad
+          format: date-time
+      additionalProperties: false
+      description: ''
+    PersonalInformation:
+      type: object
+      properties:
+        givenName:
+          description: Nombre completo operador
+          type: string
+          format: string
+        email:
+          description: El email del operador
+          type: string
+          format: email
+          nullable: true
+        birthday:
+          description: Fecha nacimiento del operador
+          type: string
+          format: date
+          nullable: true
+        entry_date:
+          description: Fecha ingreso del operador
+          type: string
+          format: date
+        picturePath:
+          description: Url fotografia
+          type: string
+          format: string
+          nullable: true
+    OperatorInformation:
+      type: object
+      properties:
+        idOperator:
+          type: integer
+          description: Id del operador
+          format: int32
+          nullable: true
+        rating: 
+          type: number
+          description: Rating del operador
+          format: int32
+          nullable: true
+        truck:
+          description: Tractor asignado del operador
+          type: string
+          format: string
+        towing:
+          description: Remolques asignados al tractor
+          type: array
+          items:
+            type: string
+    OperatorProfile:
+      type: object
+      properties:
+        code:
+          description: Status code
+          type: integer
+          format: int32
+        message:
+          type: string
+          description: Mensaje de respuesta
+          nullable: true
+        data:
+          type: object
+          properties:
+            operatorInformation:
+               $ref: '#/components/schemas/OperatorInformation'
+            personalInformation:
+              $ref: '#/components/schemas/PersonalInformation'
+    Zone:
+      required:
+        - active
+        - code
+        - name
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+          nullable: true
+        name:
+          type: string
+        code:
+          type: string
+        active:
+          type: boolean
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: http
+      description: Por favor ingrese el token de la sesión del usuario
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - Bearer: []

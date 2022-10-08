@@ -1,0 +1,385 @@
+openapi: 3.0.1
+info:
+  title: Transportes Cuauhtémoc
+  description: Transportes Cuauhtémoc (ASP.NET Core 3.1)
+  termsOfService: http://www.tc.com.mx
+  contact:
+    name: Transportes Cuauhtémoc
+    url: http://www.tc.com.mx
+    email: 'support@tc.com.mx'
+  version: 1.0.0
+servers:
+  - url: /api/mantenimiento
+paths:
+  /maintenance-orders:
+    get:
+      tags:
+        - LoadPlansApi
+      summary: Obtiene las ordenes de mantenimiento
+      parameters:
+        - name: status
+          in: query
+          schema:
+            $ref: '#/components/schemas/Status'
+        - name: startDate
+          in: query
+          schema:
+            type: string
+            format: date-time
+            nullable: true
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MttoOrden'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MttoOrden'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MttoOrden'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MttoOrden'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MttoOrden'
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+components:
+  schemas:
+    Status:
+      enum:
+        - released
+        - closed
+        - open
+        - canceled
+      type: string
+      description: Gets or Sets Status
+    MttoOrden:
+      type: object
+      properties:
+        idArea:
+          type: integer
+          format: int32
+        idOrden:
+          type: integer
+          format: int32
+        idServicio:
+          type: string
+          nullable: true
+        idEntrada:
+          type: integer
+          format: int32
+          nullable: true
+        fechaInicio:
+          type: string
+          format: date-time
+        fechaCierre:
+          type: string
+          format: date-time
+          nullable: true
+        idRazon:
+          type: integer
+          format: int32
+          nullable: true
+        estado:
+          type: string
+          nullable: true
+        kmsInicio:
+          type: integer
+          format: int32
+        kmsFin:
+          type: integer
+          format: int32
+          nullable: true
+        idSupervisoEntrada:
+          type: integer
+          format: int32
+          nullable: true
+        idSupervisoSalida:
+          type: integer
+          format: int32
+          nullable: true
+        duracionEstimada:
+          type: number
+          format: double
+          nullable: true
+        duracionReal:
+          type: number
+          format: double
+          nullable: true
+        idConjunto:
+          type: string
+          nullable: true
+        idUnidad:
+          type: string
+          nullable: true
+        idIngreso:
+          type: string
+          nullable: true
+        idUnidadConta:
+          type: string
+          nullable: true
+        fechaPrometida:
+          type: string
+          format: date-time
+          nullable: true
+        observaciones:
+          type: string
+          nullable: true
+        fechaLiberacion:
+          type: string
+          format: date-time
+          nullable: true
+        costoManoObra:
+          type: number
+          format: double
+          nullable: true
+        costoTallerExterno:
+          type: number
+          format: double
+          nullable: true
+        hrsApertura:
+          type: number
+          format: double
+          nullable: true
+        hrsCierre:
+          type: number
+          format: double
+          nullable: true
+        kmsEntrada:
+          type: integer
+          format: int32
+          nullable: true
+        hrsEntrada:
+          type: number
+          format: double
+          nullable: true
+        express:
+          type: string
+          nullable: true
+        idOperador:
+          type: integer
+          format: int32
+          nullable: true
+        idRazonCierre:
+          type: integer
+          format: int32
+          nullable: true
+        costoRefacciones:
+          type: number
+          format: double
+          nullable: true
+        secuencia:
+          type: integer
+          format: int32
+          nullable: true
+        reliberada:
+          type: string
+          nullable: true
+        facturaStatus:
+          type: integer
+          format: int32
+          nullable: true
+        idAreaunidad:
+          type: integer
+          format: int32
+          nullable: true
+        idDeptounidad:
+          type: integer
+          format: int32
+          nullable: true
+        noMedidor:
+          type: integer
+          format: int32
+          nullable: true
+        fechaEdoDoc:
+          type: string
+          format: date-time
+          nullable: true
+        fechaServicioSig:
+          type: string
+          format: date-time
+          nullable: true
+        kmsServicioSig:
+          type: number
+          format: double
+          nullable: true
+        idEvaluacionorden:
+          type: integer
+          format: int32
+          nullable: true
+        idAreaguia:
+          type: integer
+          format: int32
+          nullable: true
+        noGuia:
+          type: integer
+          format: int32
+          nullable: true
+        idRemolque:
+          type: string
+          nullable: true
+        idLinea:
+          type: string
+          nullable: true
+        idSucursal:
+          type: integer
+          format: int32
+          nullable: true
+        horasRazon:
+          type: integer
+          format: int32
+        archivo:
+          type: string
+          nullable: true
+        idRecepcion:
+          type: integer
+          format: int32
+          nullable: true
+        unidadReclamada:
+          type: string
+          nullable: true
+        advertenciaGarantiaRefacciones:
+          type: string
+          nullable: true
+        advertenciaGarantiaComponentes:
+          type: string
+          nullable: true
+        estadoFacturacion:
+          type: string
+          nullable: true
+        precioMoFactura:
+          type: number
+          format: double
+          nullable: true
+        precioRefFactura:
+          type: number
+          format: double
+          nullable: true
+        precioOsteFactura:
+          type: number
+          format: double
+          nullable: true
+        precioTotalFactura:
+          type: number
+          format: double
+          nullable: true
+        idModifico:
+          type: string
+          nullable: true
+        fechaIngreso:
+          type: string
+          format: date-time
+          nullable: true
+        fechaModifico:
+          type: string
+          format: date-time
+          nullable: true
+        factIdCliente:
+          type: integer
+          format: int32
+          nullable: true
+        idAreaFactura:
+          type: integer
+          format: int32
+          nullable: true
+        idFactura:
+          type: integer
+          format: int32
+          nullable: true
+        idTipoOperacion:
+          type: integer
+          format: int32
+          nullable: true
+        idMultiEmpresa:
+          type: integer
+          format: int32
+          nullable: true
+        idMultiEmpresaUnidad:
+          type: integer
+          format: int32
+          nullable: true
+      additionalProperties: false
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        status:
+          type: integer
+          format: int32
+          nullable: true
+        detail:
+          type: string
+          nullable: true
+        instance:
+          type: string
+          nullable: true
+        extensions:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties: false
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: http
+      description: Por favor ingrese el token de la sesión del usuario
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - Bearer: []

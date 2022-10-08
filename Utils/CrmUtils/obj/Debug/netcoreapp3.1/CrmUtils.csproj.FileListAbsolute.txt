@@ -1,0 +1,14 @@
+C:\Softm\Git\tc-tms-apiapp\Utils\CrmUtils\obj\Debug\netcoreapp3.1\CrmUtils.csprojAssemblyReference.cache
+C:\Softm\Git\tc-tms-apiapp\Utils\CrmUtils\obj\Debug\netcoreapp3.1\CrmUtils.AssemblyInfoInputs.cache
+C:\Softm\Git\tc-tms-apiapp\Utils\CrmUtils\obj\Debug\netcoreapp3.1\CrmUtils.AssemblyInfo.cs
+C:\Softm\Git\tc-tms-apiapp\Utils\CrmUtils\bin\Debug\netcoreapp3.1\CrmUtils.deps.json
+C:\Softm\Git\tc-tms-apiapp\Utils\CrmUtils\bin\Debug\netcoreapp3.1\CrmUtils.dll
+C:\Softm\Git\tc-tms-apiapp\Utils\CrmUtils\bin\Debug\netcoreapp3.1\CrmUtils.pdb
+C:\Softm\Git\tc-tms-apiapp\Utils\CrmUtils\bin\Debug\netcoreapp3.1\SoftM.EncryptionLibrary.dll
+C:\Softm\Git\tc-tms-apiapp\Utils\CrmUtils\bin\Debug\netcoreapp3.1\TmsTcAPI.DAL.dll
+C:\Softm\Git\tc-tms-apiapp\Utils\CrmUtils\bin\Debug\netcoreapp3.1\TmsTcAPI.DAL.pdb
+C:\Softm\Git\tc-tms-apiapp\Utils\CrmUtils\obj\Debug\netcoreapp3.1\CrmUtils.csproj.CopyComplete
+C:\Softm\Git\tc-tms-apiapp\Utils\CrmUtils\obj\Debug\netcoreapp3.1\CrmUtils.dll
+C:\Softm\Git\tc-tms-apiapp\Utils\CrmUtils\obj\Debug\netcoreapp3.1\CrmUtils.pdb
+C:\Softm\Git\tc-tms-apiapp\Utils\CrmUtils\bin\Debug\netcoreapp3.1\PatternRepositories.dll
+C:\Softm\Git\tc-tms-apiapp\Utils\CrmUtils\bin\Debug\netcoreapp3.1\PatternRepositories.pdb

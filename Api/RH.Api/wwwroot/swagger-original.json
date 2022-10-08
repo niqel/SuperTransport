@@ -1,0 +1,629 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Transportes Cuauhtémoc",
+    "description" : "Transportes Cuauhtémoc (ASP.NET Core 3.1)",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "/"
+  } ],
+  "security" : [ {
+    "Bearer" : [ ]
+  } ],
+  "tags" : [ {
+    "name" : "employees",
+    "description" : "Operaciones con Empleados"
+  }, {
+    "name" : "truck-operators",
+    "description" : "Operaciones con Operadores"
+  } ],
+  "paths" : {
+    "/employees/types" : {
+      "get" : {
+        "tags" : [ "employees" ],
+        "summary" : "Obtiene los tipos de empleado en el sistema",
+        "operationId" : "GetEmployeeTypes",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/EmployeeType"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/employees/types/{id}/availability-reasons" : {
+      "get" : {
+        "tags" : [ "employees" ],
+        "summary" : "Obtiene las razones de disponibilidad del sistema",
+        "operationId" : "GetEmployeeAvailabilityReasons",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "El id del tipo de empleado",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/AvailabilityReason"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/truck-operators" : {
+      "get" : {
+        "tags" : [ "truck-operators" ],
+        "summary" : "Obtiene los operadores en el sistema",
+        "operationId" : "GetTruckOperators",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/TruckOperator"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/truck-operators/{id}" : {
+      "put" : {
+        "tags" : [ "truck-operators" ],
+        "summary" : "Actualiza un operador",
+        "operationId" : "UpdateTruckOperator",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "El id del operador",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/TruckOperator"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/truck-operators/{id}/availability" : {
+      "get" : {
+        "tags" : [ "truck-operators" ],
+        "summary" : "Obtiene la disponibilidad de un operador",
+        "operationId" : "GetTruckOperatorAvailability",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "El id del operador",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }, {
+          "name" : "startDate",
+          "in" : "query",
+          "description" : "La primera fecha a consultar",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "endDate",
+          "in" : "query",
+          "description" : "La última fecha a consultar",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Availability"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "truck-operators" ],
+        "summary" : "Actualiza la disponibilidad de un operador",
+        "operationId" : "UpdateTruckOperatorAvailability",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "El id del operador",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Availability"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "ProblemDetails" : {
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "title" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "status" : {
+            "type" : "integer",
+            "nullable" : true
+          },
+          "detail" : {
+            "type" : "string",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "instance" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : {
+          "type" : "object",
+          "additionalProperties" : false
+        }
+      },
+      "BaseEntity" : {
+        "required" : [ "active", "created_at", "created_by", "id", "updated_at", "updated_by" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "El id de esta entidad",
+            "format" : "int32"
+          },
+          "active" : {
+            "type" : "boolean",
+            "description" : "La entidad se encuentra activa"
+          },
+          "created_by" : {
+            "type" : "integer",
+            "description" : "El id del usuario que creo esta entidad",
+            "format" : "int32"
+          },
+          "created_at" : {
+            "type" : "string",
+            "description" : "La fecha de creación de la entidad",
+            "format" : "date-time"
+          },
+          "updated_by" : {
+            "type" : "integer",
+            "description" : "El id del último usuario que actualizo esta entidad",
+            "format" : "int32"
+          },
+          "updated_at" : {
+            "type" : "string",
+            "description" : "La fecha de la última actualización de la entidad",
+            "format" : "date-time"
+          }
+        }
+      },
+      "Address" : {
+        "required" : [ "city", "country", "line1", "postal_code", "state" ],
+        "type" : "object",
+        "properties" : {
+          "line1" : {
+            "type" : "string",
+            "description" : "La primera línea de esta dirección"
+          },
+          "line2" : {
+            "type" : "string",
+            "description" : "La segunda línea de esta dirección"
+          },
+          "line3" : {
+            "type" : "string",
+            "description" : "La tercera línea de esta dirección"
+          },
+          "city" : {
+            "type" : "string",
+            "description" : "La ciudad de esta dirección"
+          },
+          "state" : {
+            "type" : "string",
+            "description" : "El estado de esta dirección"
+          },
+          "postal_code" : {
+            "type" : "integer",
+            "description" : "El código postal de esta dirección",
+            "format" : "int32"
+          },
+          "country" : {
+            "type" : "string",
+            "description" : "El país de esta dirección"
+          }
+        }
+      },
+      "Person" : {
+        "required" : [ "given_name", "paternal_surname" ],
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/BaseEntity"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "given_name" : {
+              "type" : "string",
+              "description" : "Los nombres de la persona"
+            },
+            "paternal_surname" : {
+              "type" : "string",
+              "description" : "El apellido paterno de la persona"
+            },
+            "maternal_surname" : {
+              "type" : "string",
+              "description" : "El apellido paterno de la persona"
+            },
+            "address" : {
+              "$ref" : "#/components/schemas/Address"
+            }
+          }
+        } ]
+      },
+      "EmployeeType" : {
+        "required" : [ "name" ],
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/BaseEntity"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "name" : {
+              "type" : "string",
+              "description" : "El nombre del tipo de empleado"
+            },
+            "description" : {
+              "type" : "string",
+              "description" : "La descripción del tipo de empleado"
+            }
+          }
+        } ]
+      },
+      "Availability" : {
+        "required" : [ "available", "date" ],
+        "type" : "object",
+        "properties" : {
+          "date" : {
+            "type" : "string",
+            "description" : "La fecha de inicio del cambio de disponibilidad",
+            "format" : "date"
+          },
+          "available" : {
+            "type" : "boolean",
+            "description" : "Indica si el operador esta disponible",
+            "nullable" : false
+          },
+          "availability_reason" : {
+            "type" : "integer",
+            "description" : "Indica la razón de la disponibilidad del empleado",
+            "format" : "int32"
+          },
+          "location" : {
+            "type" : "integer",
+            "description" : "Indica la localización esperada de este empleado tras su cambio de disponibilidad",
+            "format" : "int32"
+          }
+        },
+        "example" : {
+          "date" : "2000-01-23",
+          "availability_reason" : 0,
+          "available" : true,
+          "location" : 6
+        }
+      },
+      "AvailabilityReason" : {
+        "required" : [ "description", "name" ],
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/BaseEntity"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "name" : {
+              "type" : "string",
+              "description" : "El nombre interno de la razón de disponibilidad"
+            },
+            "description" : {
+              "type" : "string",
+              "description" : "Como se mostrara al usuario final"
+            }
+          }
+        } ]
+      },
+      "Employee" : {
+        "required" : [ "type" ],
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/Person"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "type" : {
+              "type" : "integer",
+              "description" : "El tipo de empleado",
+              "format" : "int32"
+            }
+          }
+        } ]
+      },
+      "Truck" : {
+        "required" : [ "id", "name" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "El id del equipo",
+            "format" : "int32"
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "El nombre del equipo"
+          }
+        },
+        "description" : "El equipo asignado a este operador"
+      },
+      "TruckOperator" : {
+        "required" : [ "rating" ],
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/Employee"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "truck" : {
+              "$ref" : "#/components/schemas/Truck"
+            },
+            "rating" : {
+              "maximum" : 100,
+              "minimum" : 0,
+              "type" : "integer",
+              "description" : "Calificación del operador",
+              "format" : "int32",
+              "nullable" : false
+            }
+          }
+        } ]
+      }
+    },
+    "responses" : {
+      "OK" : {
+        "description" : "OK",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ProblemDetails"
+            }
+          }
+        }
+      },
+      "BadRequest" : {
+        "description" : "Bad Request",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ProblemDetails"
+            }
+          }
+        }
+      },
+      "Unauthorized" : {
+        "description" : "Unauthorized",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ProblemDetails"
+            }
+          }
+        }
+      },
+      "NotFound" : {
+        "description" : "Not Found",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ProblemDetails"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "Bearer" : {
+        "type" : "http",
+        "scheme" : "bearer",
+        "bearerFormat" : "JWT"
+      }
+    }
+  }
+}

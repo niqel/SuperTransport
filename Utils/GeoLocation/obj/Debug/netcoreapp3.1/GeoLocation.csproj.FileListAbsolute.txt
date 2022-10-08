@@ -1,0 +1,8 @@
+C:\Softm\Git\tc-tms-apiapp\Utils\GeoLocation\bin\Debug\netcoreapp3.1\GeoLocation.deps.json
+C:\Softm\Git\tc-tms-apiapp\Utils\GeoLocation\bin\Debug\netcoreapp3.1\GeoLocation.dll
+C:\Softm\Git\tc-tms-apiapp\Utils\GeoLocation\bin\Debug\netcoreapp3.1\GeoLocation.pdb
+C:\Softm\Git\tc-tms-apiapp\Utils\GeoLocation\obj\Debug\netcoreapp3.1\GeoLocation.AssemblyInfoInputs.cache
+C:\Softm\Git\tc-tms-apiapp\Utils\GeoLocation\obj\Debug\netcoreapp3.1\GeoLocation.AssemblyInfo.cs
+C:\Softm\Git\tc-tms-apiapp\Utils\GeoLocation\obj\Debug\netcoreapp3.1\GeoLocation.dll
+C:\Softm\Git\tc-tms-apiapp\Utils\GeoLocation\obj\Debug\netcoreapp3.1\GeoLocation.pdb
+C:\Softm\Git\tc-tms-apiapp\Utils\GeoLocation\obj\Debug\netcoreapp3.1\GeoLocation.csprojAssemblyReference.cache

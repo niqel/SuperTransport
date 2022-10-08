@@ -1,0 +1,13 @@
+C:\Softm\Git\tc-tms-apiapp\Utils\AuthenticationHandler\obj\Debug\netcoreapp3.1\AuthenticationHandler.AssemblyInfoInputs.cache
+C:\Softm\Git\tc-tms-apiapp\Utils\AuthenticationHandler\obj\Debug\netcoreapp3.1\AuthenticationHandler.AssemblyInfo.cs
+C:\Softm\Git\tc-tms-apiapp\Utils\AuthenticationHandler\bin\Debug\netcoreapp3.1\AuthenticationHandler.deps.json
+C:\Softm\Git\tc-tms-apiapp\Utils\AuthenticationHandler\bin\Debug\netcoreapp3.1\AuthenticationHandler.dll
+C:\Softm\Git\tc-tms-apiapp\Utils\AuthenticationHandler\bin\Debug\netcoreapp3.1\AuthenticationHandler.pdb
+C:\Softm\Git\tc-tms-apiapp\Utils\AuthenticationHandler\bin\Debug\netcoreapp3.1\TmsTcAPI.DAL.dll
+C:\Softm\Git\tc-tms-apiapp\Utils\AuthenticationHandler\bin\Debug\netcoreapp3.1\TmsTcAPI.DAL.pdb
+C:\Softm\Git\tc-tms-apiapp\Utils\AuthenticationHandler\obj\Debug\netcoreapp3.1\AuthenticationHandler.csprojAssemblyReference.cache
+C:\Softm\Git\tc-tms-apiapp\Utils\AuthenticationHandler\obj\Debug\netcoreapp3.1\AuthenticationHandler.csproj.CopyComplete
+C:\Softm\Git\tc-tms-apiapp\Utils\AuthenticationHandler\obj\Debug\netcoreapp3.1\AuthenticationHandler.dll
+C:\Softm\Git\tc-tms-apiapp\Utils\AuthenticationHandler\obj\Debug\netcoreapp3.1\AuthenticationHandler.pdb
+C:\Softm\Git\tc-tms-apiapp\Utils\AuthenticationHandler\bin\Debug\netcoreapp3.1\PatternRepositories.dll
+C:\Softm\Git\tc-tms-apiapp\Utils\AuthenticationHandler\bin\Debug\netcoreapp3.1\PatternRepositories.pdb

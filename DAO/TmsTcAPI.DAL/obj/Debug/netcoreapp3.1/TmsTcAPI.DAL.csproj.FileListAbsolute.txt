@@ -1,0 +1,14 @@
+C:\Softm\Git\tc-tms-apiapp\DAO\TmsTcAPI.DAL\bin\Debug\netcoreapp3.1\TmsTcAPI.DAL.deps.json
+C:\Softm\Git\tc-tms-apiapp\DAO\TmsTcAPI.DAL\bin\Debug\netcoreapp3.1\TmsTcAPI.DAL.runtimeconfig.json
+C:\Softm\Git\tc-tms-apiapp\DAO\TmsTcAPI.DAL\bin\Debug\netcoreapp3.1\TmsTcAPI.DAL.runtimeconfig.dev.json
+C:\Softm\Git\tc-tms-apiapp\DAO\TmsTcAPI.DAL\bin\Debug\netcoreapp3.1\TmsTcAPI.DAL.dll
+C:\Softm\Git\tc-tms-apiapp\DAO\TmsTcAPI.DAL\bin\Debug\netcoreapp3.1\TmsTcAPI.DAL.pdb
+C:\Softm\Git\tc-tms-apiapp\DAO\TmsTcAPI.DAL\obj\Debug\netcoreapp3.1\TmsTcAPI.DAL.csprojAssemblyReference.cache
+C:\Softm\Git\tc-tms-apiapp\DAO\TmsTcAPI.DAL\obj\Debug\netcoreapp3.1\TmsTcAPI.DAL.AssemblyInfoInputs.cache
+C:\Softm\Git\tc-tms-apiapp\DAO\TmsTcAPI.DAL\obj\Debug\netcoreapp3.1\TmsTcAPI.DAL.AssemblyInfo.cs
+C:\Softm\Git\tc-tms-apiapp\DAO\TmsTcAPI.DAL\obj\Debug\netcoreapp3.1\TmsTcAPI.DAL.dll
+C:\Softm\Git\tc-tms-apiapp\DAO\TmsTcAPI.DAL\obj\Debug\netcoreapp3.1\TmsTcAPI.DAL.pdb
+C:\Softm\Git\tc-tms-apiapp\DAO\TmsTcAPI.DAL\obj\Debug\netcoreapp3.1\TmsTcAPI.DAL.genruntimeconfig.cache
+C:\Softm\Git\tc-tms-apiapp\DAO\TmsTcAPI.DAL\bin\Debug\netcoreapp3.1\PatternRepositories.dll
+C:\Softm\Git\tc-tms-apiapp\DAO\TmsTcAPI.DAL\bin\Debug\netcoreapp3.1\PatternRepositories.pdb
+C:\Softm\Git\tc-tms-apiapp\DAO\TmsTcAPI.DAL\obj\Debug\netcoreapp3.1\TmsTcAPI.DAL.csproj.CopyComplete

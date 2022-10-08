@@ -1,0 +1,664 @@
+openapi: 3.0.1
+info:
+  title: Transportes Cuauhtémoc
+  description: Transportes Cuauhtémoc (ASP.NET Core 3.1)
+  termsOfService: http://www.tc.com.mx
+  contact:
+    name: Transportes Cuauhtémoc
+    url: http://www.tc.com.mx
+    email: 'support@tc.com.mx'
+  version: 1.0.0
+servers:
+  - url: /api/rutas
+paths:
+  /Api/Cotizacion/ObtenerOrigenes:
+    post:
+      tags:
+        - Cotizacion
+      summary: Regresa la consulta de Paises
+      parameters:
+        - name: razonSocial
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: nombreComercial
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: Holdings
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: nombreHolding
+          in: query
+          schema:
+            type: number
+            format: float
+        - name: porcentaje
+          in: query
+          schema:
+            type: number
+            format: float
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+  /Api/Cotizacion/ObtenerDestinos:
+    post:
+      tags:
+        - Cotizacion
+      summary: Regresa la consulta de Paises
+      parameters:
+        - name: razonSocial
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: nombreComercial
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: Holdings
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: nombreHolding
+          in: query
+          schema:
+            type: number
+            format: float
+        - name: porcentaje
+          in: query
+          schema:
+            type: number
+            format: float
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+  /Api/Cotizacion/Repartos:
+    post:
+      tags:
+        - Cotizacion
+      summary: Regresa la consulta de Paises
+      parameters:
+        - name: razonSocial
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: nombreComercial
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: Holdings
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: nombreHolding
+          in: query
+          schema:
+            type: number
+            format: float
+        - name: porcentaje
+          in: query
+          schema:
+            type: number
+            format: float
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+  /Api/Cotizacion/ObtenerEstructuraCostos/Variables:
+    post:
+      tags:
+        - Cotizacion
+      summary: Regresa la consulta de Paises
+      parameters:
+        - name: razonSocial
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: nombreComercial
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: Holdings
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: nombreHolding
+          in: query
+          schema:
+            type: number
+            format: float
+        - name: porcentaje
+          in: query
+          schema:
+            type: number
+            format: float
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+  /Api/Cotizacion/ObtenerEstructuraCostos/Fijos:
+    post:
+      tags:
+        - Cotizacion
+      summary: Regresa la consulta de Paises
+      parameters:
+        - name: razonSocial
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: nombreComercial
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: Holdings
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: nombreHolding
+          in: query
+          schema:
+            type: number
+            format: float
+        - name: porcentaje
+          in: query
+          schema:
+            type: number
+            format: float
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+  /Api/Cotizacion/Regresos:
+    post:
+      tags:
+        - Cotizacion
+      summary: Regresa la consulta de Paises
+      parameters:
+        - name: razonSocial
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: nombreComercial
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: Holdings
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: nombreHolding
+          in: query
+          schema:
+            type: number
+            format: float
+        - name: porcentaje
+          in: query
+          schema:
+            type: number
+            format: float
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+  /Api/Cotizacion/ObtenerPrecioFleteHistorico:
+    post:
+      tags:
+        - Cotizacion
+      summary: Regresa la consulta de Paises
+      parameters:
+        - name: razonSocial
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: nombreComercial
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: Holdings
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: nombreHolding
+          in: query
+          schema:
+            type: number
+            format: float
+        - name: porcentaje
+          in: query
+          schema:
+            type: number
+            format: float
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+  /Api/Cotizacion/ObtenerProbabilidadCarga:
+    post:
+      tags:
+        - Cotizacion
+      summary: Regresa la consulta de Paises
+      parameters:
+        - name: razonSocial
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: nombreComercial
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: Holdings
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: nombreHolding
+          in: query
+          schema:
+            type: number
+            format: float
+        - name: porcentaje
+          in: query
+          schema:
+            type: number
+            format: float
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+  /Api/Cotizacion/GeneraTarifas:
+    post:
+      tags:
+        - Cotizacion
+      summary: Regresa la consulta de Paises
+      parameters:
+        - name: razonSocial
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: nombreComercial
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: Holdings
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: nombreHolding
+          in: query
+          schema:
+            type: number
+            format: float
+        - name: porcentaje
+          in: query
+          schema:
+            type: number
+            format: float
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+  /Api/Oficinas/Rampas:
+    post:
+      tags:
+        - Oficinas
+      summary: Regresa la consulta de Paises
+      parameters:
+        - name: razonSocial
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: nombreComercial
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: Holdings
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: nombreHolding
+          in: query
+          schema:
+            type: number
+            format: float
+        - name: porcentaje
+          in: query
+          schema:
+            type: number
+            format: float
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+  /Api/Oficinas/Regresos:
+    post:
+      tags:
+        - Oficinas
+      summary: Regresa la consulta de Paises
+      parameters:
+        - name: razonSocial
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: nombreComercial
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: Holdings
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: nombreHolding
+          in: query
+          schema:
+            type: number
+            format: float
+        - name: porcentaje
+          in: query
+          schema:
+            type: number
+            format: float
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+  /Api/Operadores/Rendimiento:
+    post:
+      tags:
+        - Operadores
+      summary: Regresa la consulta de Paises
+      parameters:
+        - name: idOperador
+          in: query
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+  /Api/Rutas/GestorRutas:
+    get:
+      tags:
+        - Rutas
+      summary: Regresa la ruta generada por GlobalMap entre un punto de Origen y uno de Destino
+      parameters:
+        - name: OrigenLatitude
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: OrigenLongitude
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: DestinoLatitude
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: DestinoLongitude
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: TipoVehiculo
+          in: query
+          schema:
+            type: string
+            nullable: true
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/JsonResult'
+components:
+  schemas:
+    JsonResult:
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties: false
+          nullable: true
+        mensaje:
+          type: string
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: http
+      description: Por favor ingrese el token de la sesión del usuario
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - Bearer: []

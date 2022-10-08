@@ -1,0 +1,599 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Transportes Cuauhtémoc",
+    "description" : "Transportes Cuauhtémoc (ASP.NET Core 3.1)",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "/"
+  } ],
+  "security" : [ {
+    "Bearer" : [ ]
+  } ],
+  "tags" : [ {
+    "name" : "trucks",
+    "description" : "Operaciones con Tractores"
+  } ],
+  "paths" : {
+    "/trucks" : {
+      "get" : {
+        "tags" : [ "trucks" ],
+        "summary" : "Obtiene los tractores en el sistema",
+        "operationId" : "GetTrucks",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Truck"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trucks/{id}/status/{status}" : {
+      "put" : {
+        "tags" : [ "trucks" ],
+        "summary" : "Actualiza el status de un tractor",
+        "operationId" : "UpdateTruckStatus",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "El id del tractor",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }, {
+          "name" : "status",
+          "in" : "path",
+          "description" : "El estatus del tractor",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trucks/satellite-view" : {
+      "get" : {
+        "tags" : [ "trucks" ],
+        "summary" : "Obtiene la información necesaria para el Visor Satelital",
+        "operationId" : "GetSatelliteView",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SatelliteView"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trucks/tracking-info" : {
+      "get" : {
+        "tags" : [ "trucks" ],
+        "summary" : "Obtiene la información de seguimiento actual de todos los tractores",
+        "operationId" : "GetTrucksTrackingInfo",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/TrackingInfo"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trucks/types" : {
+      "get" : {
+        "tags" : [ "trucks" ],
+        "summary" : "Obtiene los tipos de tractor",
+        "operationId" : "GetTruckTypes",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/TruckType"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trucks/status" : {
+      "get" : {
+        "tags" : [ "trucks" ],
+        "summary" : "Obtiene los estatus que puede tener un tractor",
+        "operationId" : "GetTruckStatus",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/TruckStatus"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "ProblemDetails" : {
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "title" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "status" : {
+            "type" : "integer",
+            "nullable" : true
+          },
+          "detail" : {
+            "type" : "string",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "instance" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : {
+          "type" : "object",
+          "additionalProperties" : false
+        }
+      },
+      "BaseEntity" : {
+        "required" : [ "active", "created_at", "created_by", "id", "name", "updated_at", "updated_by" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "El id de esta entidad",
+            "format" : "int32"
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "El nombre esta entidad"
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "La descripción de esta entidad"
+          },
+          "active" : {
+            "type" : "boolean",
+            "description" : "La entidad se encuentra activa"
+          },
+          "created_by" : {
+            "type" : "integer",
+            "description" : "El id del usuario que creo esta entidad",
+            "format" : "int32"
+          },
+          "created_at" : {
+            "type" : "string",
+            "description" : "La fecha de creación de la entidad",
+            "format" : "date-time"
+          },
+          "updated_by" : {
+            "type" : "integer",
+            "description" : "El id del último usuario que actualizo esta entidad",
+            "format" : "int32"
+          },
+          "updated_at" : {
+            "type" : "string",
+            "description" : "La fecha de la última actualización de la entidad",
+            "format" : "date-time"
+          }
+        }
+      },
+      "Coordinates" : {
+        "required" : [ "latitude", "longitude" ],
+        "type" : "object",
+        "properties" : {
+          "latitude" : {
+            "type" : "number",
+            "description" : "Latitud",
+            "format" : "double"
+          },
+          "longitude" : {
+            "type" : "number",
+            "description" : "Longitud",
+            "format" : "double"
+          }
+        },
+        "description" : "Las coordenadas de esta ubicación",
+        "example" : {
+          "latitude" : 0.8008281904610115,
+          "longitude" : 6.027456183070403
+        }
+      },
+      "Position" : {
+        "required" : [ "coordinates", "updated_at" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "description" : "El nombre de esta ubicación"
+          },
+          "coordinates" : {
+            "$ref" : "#/components/schemas/Coordinates"
+          },
+          "updated_at" : {
+            "type" : "string",
+            "description" : "La fecha de la última actualización de la posición",
+            "format" : "date-time"
+          }
+        },
+        "description" : "Ubicación",
+        "example" : {
+          "updated_at" : "2000-01-23T04:56:07.000+00:00",
+          "name" : "name",
+          "coordinates" : null
+        }
+      },
+      "Office" : {
+        "required" : [ "coordinates", "name", "trucks" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "description" : "El nombre de esta oficina"
+          },
+          "coordinates" : {
+            "$ref" : "#/components/schemas/Coordinates"
+          },
+          "trucks" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/TrackingInfo"
+            }
+          }
+        },
+        "description" : "Oficina",
+        "example" : {
+          "name" : "name",
+          "coordinates" : {
+            "latitude" : 0.8008281904610115,
+            "longitude" : 6.027456183070403
+          },
+          "trucks" : [ {
+            "id" : 1,
+            "position" : {
+              "updated_at" : "2000-01-23T04:56:07.000+00:00",
+              "name" : "name",
+              "coordinates" : null
+            }
+          }, {
+            "id" : 1,
+            "position" : {
+              "updated_at" : "2000-01-23T04:56:07.000+00:00",
+              "name" : "name",
+              "coordinates" : null
+            }
+          } ]
+        }
+      },
+      "SatelliteView" : {
+        "required" : [ "offices", "trucks" ],
+        "type" : "object",
+        "properties" : {
+          "offices" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Office"
+            }
+          },
+          "trucks" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/TrackingInfo"
+            }
+          }
+        },
+        "description" : "El modelo de vista satelital",
+        "example" : {
+          "offices" : [ {
+            "name" : "name",
+            "coordinates" : {
+              "latitude" : 0.8008281904610115,
+              "longitude" : 6.027456183070403
+            },
+            "trucks" : [ {
+              "id" : 1,
+              "position" : {
+                "updated_at" : "2000-01-23T04:56:07.000+00:00",
+                "name" : "name",
+                "coordinates" : null
+              }
+            }, {
+              "id" : 1,
+              "position" : {
+                "updated_at" : "2000-01-23T04:56:07.000+00:00",
+                "name" : "name",
+                "coordinates" : null
+              }
+            } ]
+          }, {
+            "name" : "name",
+            "coordinates" : {
+              "latitude" : 0.8008281904610115,
+              "longitude" : 6.027456183070403
+            },
+            "trucks" : [ {
+              "id" : 1,
+              "position" : {
+                "updated_at" : "2000-01-23T04:56:07.000+00:00",
+                "name" : "name",
+                "coordinates" : null
+              }
+            }, {
+              "id" : 1,
+              "position" : {
+                "updated_at" : "2000-01-23T04:56:07.000+00:00",
+                "name" : "name",
+                "coordinates" : null
+              }
+            } ]
+          } ],
+          "trucks" : [ null, null ]
+        }
+      },
+      "TrackingInfo" : {
+        "required" : [ "id", "position" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "El id de seguimiento de la unidad",
+            "format" : "int32"
+          },
+          "position" : {
+            "$ref" : "#/components/schemas/Position"
+          }
+        },
+        "description" : "Información de seguimiento",
+        "example" : {
+          "id" : 1,
+          "position" : {
+            "updated_at" : "2000-01-23T04:56:07.000+00:00",
+            "name" : "name",
+            "coordinates" : null
+          }
+        }
+      },
+      "Truck" : {
+        "required" : [ "status", "tracking_id", "unit_type" ],
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/BaseEntity"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "tracking_id" : {
+              "type" : "integer",
+              "description" : "El id de seguimiento de la unidad",
+              "format" : "int32"
+            },
+            "type" : {
+              "type" : "integer",
+              "description" : "El id del tipo de unidad",
+              "format" : "int32"
+            },
+            "status" : {
+              "type" : "integer",
+              "description" : "El estatus del equipo",
+              "format" : "int32"
+            }
+          }
+        } ]
+      },
+      "TruckType" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/BaseEntity"
+        } ]
+      },
+      "TruckStatus" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/BaseEntity"
+        } ]
+      }
+    },
+    "responses" : {
+      "OK" : {
+        "description" : "OK",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ProblemDetails"
+            }
+          }
+        }
+      },
+      "BadRequest" : {
+        "description" : "Bad Request",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ProblemDetails"
+            }
+          }
+        }
+      },
+      "Unauthorized" : {
+        "description" : "Unauthorized",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ProblemDetails"
+            }
+          }
+        }
+      },
+      "NotFound" : {
+        "description" : "Not Found",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ProblemDetails"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "Bearer" : {
+        "type" : "http",
+        "scheme" : "bearer",
+        "bearerFormat" : "JWT"
+      }
+    }
+  }
+}

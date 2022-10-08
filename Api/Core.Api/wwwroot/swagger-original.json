@@ -1,0 +1,725 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Transportes Cuauhtémoc",
+    "description" : "Transportes Cuauhtémoc (ASP.NET Core 3.1)",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "/"
+  } ],
+  "security" : [ {
+    "Bearer" : [ ]
+  } ],
+  "tags" : [ {
+    "name" : "sessions",
+    "description" : "Operaciones con sesiones"
+  }, {
+    "name" : "users",
+    "description" : "Operaciones con usuarios"
+  }, {
+    "name" : "customers",
+    "description" : "Operaciones con clientes"
+  } ],
+  "paths" : {
+    "/sessions" : {
+      "post" : {
+        "tags" : [ "sessions" ],
+        "summary" : "Crea una nueva sesión",
+        "operationId" : "Login",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Login"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Session"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ ]
+      },
+      "delete" : {
+        "tags" : [ "sessions" ],
+        "summary" : "Cierra la sesión actual",
+        "operationId" : "Logout",
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customers" : {
+      "get" : {
+        "tags" : [ "customers" ],
+        "summary" : "Listado de clientes en el sistema",
+        "operationId" : "GetCustomers",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Customer"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users" : {
+      "get" : {
+        "tags" : [ "users" ],
+        "summary" : "Listado de usuarios en el sistema",
+        "operationId" : "GetUsers",
+        "parameters" : [ {
+          "name" : "group",
+          "in" : "query",
+          "description" : "ID del grupo a incluir en el listado",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }, {
+          "name" : "tipo",
+          "in" : "query",
+          "description" : "Tipo de usuarios a incluir en el listado",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/User"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "users" ],
+        "summary" : "Crea un nuevo usuario",
+        "operationId" : "CreateUser",
+        "parameters" : [ {
+          "name" : "password",
+          "in" : "query",
+          "description" : "El hash de la contraseña del usuario",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "password"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/User"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}" : {
+      "get" : {
+        "tags" : [ "users" ],
+        "summary" : "Obtiene un usuario",
+        "operationId" : "GetUser",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "El id del usuario",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not Found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "users" ],
+        "summary" : "Actualiza un usuario",
+        "operationId" : "UpdateUser",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "El id del usuario",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/User"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "users" ],
+        "summary" : "Desactiva la cuenta de un usuario",
+        "operationId" : "DeleteUser",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "El id del usuario",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not Found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}/password" : {
+      "put" : {
+        "tags" : [ "users" ],
+        "summary" : "Actualiza la contraseña de un usuario",
+        "operationId" : "UpdateUserPassword",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "El id del usuario",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }, {
+          "name" : "password",
+          "in" : "query",
+          "description" : "El hash de la contraseña del usuario",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "password"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/User"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/types" : {
+      "get" : {
+        "tags" : [ "users" ],
+        "summary" : "Listado de tipos de usuarios en el sistema",
+        "operationId" : "GetUserTypes",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/UserTypes"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "ProblemDetails" : {
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "title" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "status" : {
+            "type" : "integer",
+            "nullable" : true
+          },
+          "detail" : {
+            "type" : "string",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "instance" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : {
+          "type" : "object",
+          "additionalProperties" : false
+        }
+      },
+      "Login" : {
+        "required" : [ "email", "password" ],
+        "type" : "object",
+        "properties" : {
+          "email" : {
+            "type" : "string",
+            "description" : "El correo del usuario",
+            "format" : "email"
+          },
+          "password" : {
+            "type" : "string",
+            "description" : "El hash de la contraseña del usuario",
+            "format" : "password"
+          }
+        }
+      },
+      "Session" : {
+        "required" : [ "token", "user" ],
+        "type" : "object",
+        "properties" : {
+          "token" : {
+            "type" : "string",
+            "description" : "El token de autorización para las peticiones"
+          },
+          "expires" : {
+            "type" : "string",
+            "description" : "El momento en el que expirara el token",
+            "format" : "date-time"
+          },
+          "user" : {
+            "$ref" : "#/components/schemas/User"
+          }
+        },
+        "example" : {
+          "expires" : "2000-01-23T04:56:07.000+00:00",
+          "user" : "",
+          "token" : "token"
+        }
+      },
+      "BaseEntity" : {
+        "required" : [ "active", "created_at", "created_by", "id", "name", "updated_at", "updated_by" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "El id de esta entidad",
+            "format" : "int32"
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "El nombre descriptivo de esta entidad"
+          },
+          "active" : {
+            "type" : "boolean",
+            "description" : "La entidad se encuentra activa"
+          },
+          "created_by" : {
+            "type" : "integer",
+            "description" : "El id del usuario que creo esta entidad",
+            "format" : "int32"
+          },
+          "created_at" : {
+            "type" : "string",
+            "description" : "La fecha de creación de la entidad",
+            "format" : "date-time"
+          },
+          "updated_by" : {
+            "type" : "integer",
+            "description" : "El id del último usuario que actualizo esta entidad",
+            "format" : "int32"
+          },
+          "updated_at" : {
+            "type" : "string",
+            "description" : "La fecha de la última actualización de la entidad",
+            "format" : "date-time"
+          }
+        }
+      },
+      "User" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/BaseEntity"
+        }, {
+          "required" : [ "email", "groups", "type" ],
+          "type" : "object",
+          "properties" : {
+            "type" : {
+              "type" : "integer",
+              "description" : "El id del tipo de usuario",
+              "format" : "int32"
+            },
+            "email" : {
+              "type" : "string",
+              "description" : "El email del usuario",
+              "format" : "email"
+            },
+            "groups" : {
+              "type" : "array",
+              "description" : "Los id de grupo en los que se encuentra el usuario",
+              "items" : {
+                "type" : "integer",
+                "format" : "int32"
+              }
+            }
+          }
+        } ]
+      },
+      "UserTypes" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/BaseEntity"
+        } ]
+      },
+      "Customer" : {
+        "required" : [ "id", "name" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "El id de este cliente",
+            "format" : "int32",
+            "nullable" : false
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "El nombre del cliente",
+            "nullable" : false
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "El alias del cliente",
+            "nullable" : true
+          },
+          "logo" : {
+            "type" : "string",
+            "format" : "byte",
+            "nullable" : true
+          }
+        },
+        "example" : {
+          "name" : "name",
+          "description" : "description",
+          "logo" : "",
+          "id" : 0
+        }
+      }
+    },
+    "responses" : {
+      "OK" : {
+        "description" : "OK",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ProblemDetails"
+            }
+          }
+        }
+      },
+      "BadRequest" : {
+        "description" : "Bad Request",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ProblemDetails"
+            }
+          }
+        }
+      },
+      "Unauthorized" : {
+        "description" : "Unauthorized",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ProblemDetails"
+            }
+          }
+        }
+      },
+      "NotFound" : {
+        "description" : "Not Found",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ProblemDetails"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "Bearer" : {
+        "type" : "http",
+        "scheme" : "bearer",
+        "bearerFormat" : "JWT"
+      }
+    }
+  }
+}

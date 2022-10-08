@@ -1,0 +1,11 @@
+C:\Softm\Git\tc-tms-apiapp\DAO\ListdbTc.DAL\bin\Debug\netcoreapp3.1\ListdbTc.DAL.deps.json
+C:\Softm\Git\tc-tms-apiapp\DAO\ListdbTc.DAL\bin\Debug\netcoreapp3.1\ListdbTc.DAL.runtimeconfig.json
+C:\Softm\Git\tc-tms-apiapp\DAO\ListdbTc.DAL\bin\Debug\netcoreapp3.1\ListdbTc.DAL.runtimeconfig.dev.json
+C:\Softm\Git\tc-tms-apiapp\DAO\ListdbTc.DAL\bin\Debug\netcoreapp3.1\ListdbTc.DAL.dll
+C:\Softm\Git\tc-tms-apiapp\DAO\ListdbTc.DAL\bin\Debug\netcoreapp3.1\ListdbTc.DAL.pdb
+C:\Softm\Git\tc-tms-apiapp\DAO\ListdbTc.DAL\obj\Debug\netcoreapp3.1\ListdbTc.DAL.AssemblyInfoInputs.cache
+C:\Softm\Git\tc-tms-apiapp\DAO\ListdbTc.DAL\obj\Debug\netcoreapp3.1\ListdbTc.DAL.AssemblyInfo.cs
+C:\Softm\Git\tc-tms-apiapp\DAO\ListdbTc.DAL\obj\Debug\netcoreapp3.1\ListdbTc.DAL.dll
+C:\Softm\Git\tc-tms-apiapp\DAO\ListdbTc.DAL\obj\Debug\netcoreapp3.1\ListdbTc.DAL.pdb
+C:\Softm\Git\tc-tms-apiapp\DAO\ListdbTc.DAL\obj\Debug\netcoreapp3.1\ListdbTc.DAL.genruntimeconfig.cache
+C:\Softm\Git\tc-tms-apiapp\DAO\ListdbTc.DAL\obj\Debug\netcoreapp3.1\ListdbTc.DAL.csprojAssemblyReference.cache

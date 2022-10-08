@@ -1,0 +1,166 @@
+openapi: 3.0.1
+info:
+  title: Transportes Cuauhtémoc
+  description: Transportes Cuauhtémoc (ASP.NET Core 3.1)
+  termsOfService: http://www.tc.com.mx
+  contact:
+    name: Transportes Cuauhtémoc
+    url: http://www.tc.com.mx
+    email: 'support@tc.com.mx'
+  version: 1.0.0
+servers:
+  - url: /api/oficinas
+paths:
+  /offices:
+    get:
+      tags:
+        - OfficesApi
+      summary: Obtiene las oficinas en el sistema
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Office'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Office'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Office'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Office'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Office'
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+components:
+  schemas:
+    Coordinates:
+      required:
+        - latitude
+        - longitude
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+      additionalProperties: false
+    Office:
+      required:
+        - active
+        - city
+        - coordinates
+        - created_at
+        - created_by
+        - description
+        - id
+        - name
+        - updated_at
+        - updated_by
+      type: object
+      properties:
+        name:
+          type: string
+          description: El nombre de esta oficina
+        description:
+          type: string
+          description: La descripción de esta oficina
+        city:
+          type: integer
+          description: El id de la ciudad en la que se encuentra esta oficina
+          format: int32
+        coordinates:
+          $ref: '#/components/schemas/Coordinates'
+        id:
+          type: integer
+          description: El id de esta entidad
+          format: int32
+        active:
+          type: boolean
+          description: La entidad se encuentra activa
+        created_by:
+          type: integer
+          description: El id del usuario que creo esta entidad
+          format: int32
+        created_at:
+          type: string
+          description: La fecha de creación de la entidad
+          format: date-time
+        updated_by:
+          type: integer
+          description: El id del último usuario que actualizo esta entidad
+          format: int32
+        updated_at:
+          type: string
+          description: La fecha de la última actualización de la entidad
+          format: date-time
+      additionalProperties: false
+      description: Oficina
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        status:
+          type: integer
+          format: int32
+          nullable: true
+        detail:
+          type: string
+          nullable: true
+        instance:
+          type: string
+          nullable: true
+        extensions:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties: false
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: http
+      description: Por favor ingrese el token de la sesión del usuario
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - Bearer: []

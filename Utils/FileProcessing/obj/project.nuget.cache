@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "6xD5FtML20CtrTXr/H6cLq8lp1zgFaYqf6PPfQ46y223dP2hsrRCnFXChl8vZdvIB70BGl/6DRAWlSsXnEtMyA==",
+  "success": true,
+  "projectFilePath": "C:\\Respaldo\\Softm\\tc-tms-apiapp\\Utils\\FileProcessing\\FileProcessing.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\niqel\\.nuget\\packages\\exceldatareader\\3.6.0\\exceldatareader.3.6.0.nupkg.sha512",
+    "C:\\Users\\niqel\\.nuget\\packages\\exceldatareader.dataset\\3.6.0\\exceldatareader.dataset.3.6.0.nupkg.sha512",
+    "C:\\Users\\niqel\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.5\\microsoft.aspnetcore.http.features.5.0.5.nupkg.sha512",
+    "C:\\Users\\niqel\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
+    "C:\\Users\\niqel\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512",
+    "C:\\Users\\niqel\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

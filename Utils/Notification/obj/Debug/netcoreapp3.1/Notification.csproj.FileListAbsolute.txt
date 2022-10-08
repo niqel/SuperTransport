@@ -1,0 +1,15 @@
+C:\Softm\Git\tc-tms-apiapp\Utils\Notification\obj\Debug\netcoreapp3.1\Notification.csprojAssemblyReference.cache
+C:\Softm\Git\tc-tms-apiapp\Utils\Notification\obj\Debug\netcoreapp3.1\Notification.AssemblyInfoInputs.cache
+C:\Softm\Git\tc-tms-apiapp\Utils\Notification\obj\Debug\netcoreapp3.1\Notification.AssemblyInfo.cs
+C:\Softm\Git\tc-tms-apiapp\Utils\Notification\bin\Debug\netcoreapp3.1\Notification.deps.json
+C:\Softm\Git\tc-tms-apiapp\Utils\Notification\bin\Debug\netcoreapp3.1\Notification.dll
+C:\Softm\Git\tc-tms-apiapp\Utils\Notification\bin\Debug\netcoreapp3.1\Notification.pdb
+C:\Softm\Git\tc-tms-apiapp\Utils\Notification\bin\Debug\netcoreapp3.1\CrmTc.DAL.dll
+C:\Softm\Git\tc-tms-apiapp\Utils\Notification\bin\Debug\netcoreapp3.1\TmsTcAPI.DAL.dll
+C:\Softm\Git\tc-tms-apiapp\Utils\Notification\bin\Debug\netcoreapp3.1\CrmTc.DAL.pdb
+C:\Softm\Git\tc-tms-apiapp\Utils\Notification\bin\Debug\netcoreapp3.1\TmsTcAPI.DAL.pdb
+C:\Softm\Git\tc-tms-apiapp\Utils\Notification\obj\Debug\netcoreapp3.1\Notification.csproj.CopyComplete
+C:\Softm\Git\tc-tms-apiapp\Utils\Notification\obj\Debug\netcoreapp3.1\Notification.dll
+C:\Softm\Git\tc-tms-apiapp\Utils\Notification\obj\Debug\netcoreapp3.1\Notification.pdb
+C:\Softm\Git\tc-tms-apiapp\Utils\Notification\bin\Debug\netcoreapp3.1\PatternRepositories.dll
+C:\Softm\Git\tc-tms-apiapp\Utils\Notification\bin\Debug\netcoreapp3.1\PatternRepositories.pdb

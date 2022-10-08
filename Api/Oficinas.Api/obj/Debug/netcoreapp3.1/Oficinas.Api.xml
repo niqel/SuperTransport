@@ -1,0 +1,244 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Oficinas.Api</name>
+    </assembly>
+    <members>
+        <member name="T:IO.Swagger.Attributes.ValidateModelStateAttribute">
+            <summary>
+            Model state validation attribute
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Attributes.ValidateModelStateAttribute.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            Called before the action method is invoked
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:IO.Swagger.Controllers.OfficesApiController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Controllers.OfficesApiController.GetOffices">
+            <summary>
+            Obtiene las oficinas en el sistema
+            </summary>
+            <response code="200">OK</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="T:IO.Swagger.Filters.BasePathFilter">
+            <summary>
+            BasePath Document Filter sets BasePath property of Swagger and removes it from the individual URL paths
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Filters.BasePathFilter.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="basePath">BasePath to remove from Operations</param>
+        </member>
+        <member name="P:IO.Swagger.Filters.BasePathFilter.BasePath">
+            <summary>
+            Gets the BasePath of the Swagger Doc
+            </summary>
+            <returns>The BasePath of the Swagger Doc</returns>
+        </member>
+        <member name="M:IO.Swagger.Filters.BasePathFilter.Apply(Microsoft.OpenApi.Models.OpenApiDocument,Swashbuckle.AspNetCore.SwaggerGen.DocumentFilterContext)">
+            <summary>
+            Apply the filter
+            </summary>
+            <param name="swaggerDoc">OpenApiDocument</param>
+            <param name="context">FilterContext</param>
+        </member>
+        <member name="T:IO.Swagger.Filters.GeneratePathParamsValidationFilter">
+            <summary>
+            Path Parameter Validation Rules Filter
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Filters.GeneratePathParamsValidationFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="operation">Operation</param>
+            <param name="context">OperationFilterContext</param>
+        </member>
+        <member name="T:IO.Swagger.Models.BaseEntity">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.BaseEntity.Id">
+            <summary>
+            El id de esta entidad
+            </summary>
+            <value>El id de esta entidad</value>
+        </member>
+        <member name="P:IO.Swagger.Models.BaseEntity.Active">
+            <summary>
+            La entidad se encuentra activa
+            </summary>
+            <value>La entidad se encuentra activa</value>
+        </member>
+        <member name="P:IO.Swagger.Models.BaseEntity.CreatedBy">
+            <summary>
+            El id del usuario que creo esta entidad
+            </summary>
+            <value>El id del usuario que creo esta entidad</value>
+        </member>
+        <member name="P:IO.Swagger.Models.BaseEntity.CreatedAt">
+            <summary>
+            La fecha de creación de la entidad
+            </summary>
+            <value>La fecha de creación de la entidad</value>
+        </member>
+        <member name="P:IO.Swagger.Models.BaseEntity.UpdatedBy">
+            <summary>
+            El id del último usuario que actualizo esta entidad
+            </summary>
+            <value>El id del último usuario que actualizo esta entidad</value>
+        </member>
+        <member name="P:IO.Swagger.Models.BaseEntity.UpdatedAt">
+            <summary>
+            La fecha de la última actualización de la entidad
+            </summary>
+            <value>La fecha de la última actualización de la entidad</value>
+        </member>
+        <member name="M:IO.Swagger.Models.BaseEntity.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.BaseEntity.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.BaseEntity.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.BaseEntity.Equals(IO.Swagger.Models.BaseEntity)">
+            <summary>
+            Returns true if BaseEntity instances are equal
+            </summary>
+            <param name="other">Instance of BaseEntity to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.BaseEntity.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.Office">
+            <summary>
+            Oficina
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.Office.Name">
+            <summary>
+            El nombre de esta oficina
+            </summary>
+            <value>El nombre de esta oficina</value>
+        </member>
+        <member name="P:IO.Swagger.Models.Office.Description">
+            <summary>
+            La descripción de esta oficina
+            </summary>
+            <value>La descripción de esta oficina</value>
+        </member>
+        <member name="P:IO.Swagger.Models.Office.City">
+            <summary>
+            El id de la ciudad en la que se encuentra esta oficina
+            </summary>
+            <value>El id de la ciudad en la que se encuentra esta oficina</value>
+        </member>
+        <member name="P:IO.Swagger.Models.Office.Coordinates">
+            <summary>
+            Gets or Sets Coordinates
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Models.Office.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Office.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Office.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Office.Equals(IO.Swagger.Models.Office)">
+            <summary>
+            Returns true if Office instances are equal
+            </summary>
+            <param name="other">Instance of Office to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Office.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Program">
+            <summary>
+            Program
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Program.Main(System.String[])">
+            <summary>
+            Main
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:IO.Swagger.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            Create the web host builder.
+            </summary>
+            <param name="args"></param>
+            <returns>IWebHostBuilder</returns>
+        </member>
+        <member name="T:IO.Swagger.Startup">
+            <summary>
+            Startup
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Startup.#ctor(Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="env"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:IO.Swagger.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:IO.Swagger.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+            <param name="loggerFactory"></param>
+        </member>
+    </members>
+</doc>

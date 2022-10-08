@@ -1,0 +1,11 @@
+C:\Softm\Git\tc-tms-apiapp\DAO\InnovaLinks.DAL\bin\Debug\netcoreapp3.1\InnovaLinks.DAL.deps.json
+C:\Softm\Git\tc-tms-apiapp\DAO\InnovaLinks.DAL\bin\Debug\netcoreapp3.1\InnovaLinks.DAL.runtimeconfig.json
+C:\Softm\Git\tc-tms-apiapp\DAO\InnovaLinks.DAL\bin\Debug\netcoreapp3.1\InnovaLinks.DAL.runtimeconfig.dev.json
+C:\Softm\Git\tc-tms-apiapp\DAO\InnovaLinks.DAL\bin\Debug\netcoreapp3.1\InnovaLinks.DAL.dll
+C:\Softm\Git\tc-tms-apiapp\DAO\InnovaLinks.DAL\bin\Debug\netcoreapp3.1\InnovaLinks.DAL.pdb
+C:\Softm\Git\tc-tms-apiapp\DAO\InnovaLinks.DAL\obj\Debug\netcoreapp3.1\InnovaLinks.DAL.AssemblyInfoInputs.cache
+C:\Softm\Git\tc-tms-apiapp\DAO\InnovaLinks.DAL\obj\Debug\netcoreapp3.1\InnovaLinks.DAL.AssemblyInfo.cs
+C:\Softm\Git\tc-tms-apiapp\DAO\InnovaLinks.DAL\obj\Debug\netcoreapp3.1\InnovaLinks.DAL.dll
+C:\Softm\Git\tc-tms-apiapp\DAO\InnovaLinks.DAL\obj\Debug\netcoreapp3.1\InnovaLinks.DAL.pdb
+C:\Softm\Git\tc-tms-apiapp\DAO\InnovaLinks.DAL\obj\Debug\netcoreapp3.1\InnovaLinks.DAL.genruntimeconfig.cache
+C:\Softm\Git\tc-tms-apiapp\DAO\InnovaLinks.DAL\obj\Debug\netcoreapp3.1\InnovaLinks.DAL.csprojAssemblyReference.cache

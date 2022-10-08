@@ -1,0 +1,8 @@
+C:\Softm\Git\tc-tms-apiapp\Utils\FileProcessing\bin\Debug\netcoreapp3.1\FileProcessing.deps.json
+C:\Softm\Git\tc-tms-apiapp\Utils\FileProcessing\bin\Debug\netcoreapp3.1\FileProcessing.dll
+C:\Softm\Git\tc-tms-apiapp\Utils\FileProcessing\bin\Debug\netcoreapp3.1\FileProcessing.pdb
+C:\Softm\Git\tc-tms-apiapp\Utils\FileProcessing\obj\Debug\netcoreapp3.1\FileProcessing.csprojAssemblyReference.cache
+C:\Softm\Git\tc-tms-apiapp\Utils\FileProcessing\obj\Debug\netcoreapp3.1\FileProcessing.AssemblyInfoInputs.cache
+C:\Softm\Git\tc-tms-apiapp\Utils\FileProcessing\obj\Debug\netcoreapp3.1\FileProcessing.AssemblyInfo.cs
+C:\Softm\Git\tc-tms-apiapp\Utils\FileProcessing\obj\Debug\netcoreapp3.1\FileProcessing.dll
+C:\Softm\Git\tc-tms-apiapp\Utils\FileProcessing\obj\Debug\netcoreapp3.1\FileProcessing.pdb

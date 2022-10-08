@@ -1,0 +1,2654 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Core.Api</name>
+    </assembly>
+    <members>
+        <member name="T:IO.Swagger.Attributes.ValidateModelStateAttribute">
+            <summary>
+            Model state validation attribute
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Attributes.ValidateModelStateAttribute.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            Called before the action method is invoked
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:IO.Swagger.Controllers.CitiesApiController">
+            <summary>
+            Api encargada de las operaciones de ciudades
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Controllers.CitiesApiController.GetCities(System.Nullable{System.Boolean})">
+            <summary>
+            Obtiene las ciudades
+            </summary>
+            <param name="active">Si se especifica filtra por estado habilitado o deshabilitado</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.CitiesApiController.UpdateCityZone(System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Asigna una zona a una ciudad
+            </summary>
+            <param name="id">El id de la ciudad</param>
+            <param name="zone">La zona a asignar</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="T:IO.Swagger.Controllers.CustomersApiController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Controllers.CustomersApiController.GetCustomers">
+            <summary>
+            Listado de clientes en el sistema
+            </summary>
+            <response code="200">OK</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="T:IO.Swagger.Controllers.DashboardApiController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Controllers.DashboardApiController.GetForecastVsReal(System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Obtiene las series de datos para la gráfica Forecast vs Real
+            </summary>
+            <param name="startDate">La primera fecha a consultar</param>
+            <param name="endDate">La última fecha a consultar</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.DashboardApiController.GetLoadedVsEmpty(System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Obtiene las series de datos para la gráfica Cantidad de Flota Cargada vs Vacía
+            </summary>
+            <param name="startDate">La primera fecha a consultar</param>
+            <param name="endDate">La última fecha a consultar</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.DashboardApiController.GetTripsMadeVsCancelled(System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Obtiene las series de datos para la gráfica Viajes Realizados vs Cancelados
+            </summary>
+            <param name="startDate">La primera fecha a consultar</param>
+            <param name="endDate">La última fecha a consultar</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.DashboardApiController.GetTrucksUsage(System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Obtiene las series de datos para la gráfica Uso de Equipo Actual
+            </summary>
+            <param name="startDate">La primera fecha a consultar</param>
+            <param name="endDate">La última fecha a consultar</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="T:IO.Swagger.Controllers.DepartmentApiController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Controllers.DepartmentApiController.DepartmentPost(IO.Swagger.Models.Department)">
+            <summary>
+            Crea un nuevo departamento
+            </summary>
+            <param name="body"></param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.DepartmentApiController.DepartmentIdDelete(System.Nullable{System.Int32})">
+            <summary>
+            Elimina un Departamento
+            </summary>
+            <param name="id">El id del departamento</param>
+            <response code="200">OK</response>
+            <response code="401">Unauthorized</response>
+            <response code="404">Not Found</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.DepartmentApiController.DepartmentGet">
+            <summary>
+            Listado de los departamentos
+            </summary>
+            <response code="200">OK</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.DepartmentApiController.DepartmentIdGet(System.Nullable{System.Int32})">
+            <summary>
+            Obtiene un departamento por id
+            </summary>
+            <param name="id">El id del departamento</param>
+            <response code="200">OK</response>
+            <response code="401">Unauthorized</response>
+            <response code="404">Not Found</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.DepartmentApiController.DepartmentIdPut(System.Nullable{System.Int32},IO.Swagger.Models.Department)">
+            <summary>
+            Actualiza el departamento
+            </summary>
+            <param name="id">El id del del departamento</param>
+            <param name="body"></param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="T:IO.Swagger.Controllers.GeneralParametersApiController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Controllers.GeneralParametersApiController.GetGeneralParameters">
+            <summary>
+            Obtiene los parametros generales
+            </summary>
+            <response code="200">OK</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.GeneralParametersApiController.UpdateGeneralParameter(System.Int32,IO.Swagger.Models.GeneralParameter)">
+            <summary>
+            Actualiza un parametro general
+            </summary>
+            <param name="id">El id del parametro general</param>
+            <param name="body">El parametro general modificado</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.GeneralParametersApiController.GetGeneralParameterHistory(System.Int32)">
+            <summary>
+            Obtiene el historial de un parametro general
+            </summary>
+            <param name="id">El id del del parametro general</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="T:IO.Swagger.Controllers.LoadPlansApiController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Controllers.LoadPlansApiController.GetOnlyTruckOperatorsMetrics(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Obtiene las métricas de los operadores
+            </summary>
+            <param name="year">El año del plan de carga</param>
+            <param name="month">El mes del plan de carga</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.LoadPlansApiController.GetLoadPlansMetrics(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Obtiene las métricas del plan de carga
+            </summary>
+            <param name="year">El año del plan de carga</param>
+            <param name="month">El mes del plan de carga</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.LoadPlansApiController.GetOnlyFleetMetrics(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Obtiene las métricas de los tractores
+            </summary>
+            <param name="year">El año del plan de carga</param>
+            <param name="month">El mes del plan de carga</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.LoadPlansApiController.GetFechaUltimaActualizacion">
+            <summary>
+            Obtiene las métricas de los tractores
+            </summary>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="T:IO.Swagger.Controllers.MarketTypesApiController">
+            <summary>
+            Api encargada de las operaciones de tipos de mercado
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Controllers.MarketTypesApiController.GetMarketTypes(System.Nullable{System.Boolean})">
+            <summary>
+            Obtiene los tipos de mercado
+            </summary>
+            <param name="active">Si se especifica filtra por estado habilitado o deshabilitado</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.MarketTypesApiController.AddMarketType(IO.Swagger.Models.MarketType)">
+            <summary>
+            Añade un tipo de mercado
+            </summary>
+            <param name="body">El tipo de mercado a añadir</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.MarketTypesApiController.UpdateMarketType(System.Int32,IO.Swagger.Models.MarketType)">
+            <summary>
+            Actualiza un tipo de mercado
+            </summary>
+            <param name="id">El id del tipo de mercado</param>
+            <param name="body">El tipo de mercado modificado</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.MarketTypesApiController.DeleteMarketType(System.Int32)">
+            <summary>
+            Deshabilita un tipo de mercado
+            </summary>
+            <param name="id">El id del tipo de mercado</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="T:IO.Swagger.Controllers.ModulesApiController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Controllers.ModulesApiController.GetModules">
+            <summary>
+            Obtiene los modulos
+            </summary>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.ModulesApiController.GetFunctionalities(System.Nullable{System.Int32})">
+            <summary>
+            Obtiene las funcionalidades de un modulo
+            </summary>
+            <param name="id">El id del modulo al que pertenece la funcionalidad</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="T:IO.Swagger.Controllers.PermissionsApiController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Controllers.PermissionsApiController.GetRolePermissions(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Obtiene los permisos
+            </summary>
+            <param name="id">El id del rol</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.PermissionsApiController.AddPermission(CrmTcAPI.Models.PermisosRol)">
+            <summary>
+            Añade un permiso
+            </summary>
+            <param name="body">El permiso a añadir</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.PermissionsApiController.UpdatePermission(System.Int32)">
+            <summary>
+            Obtiene el historial de un permiso
+            </summary>
+            <param name="id">El id del permiso</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.PermissionsApiController.UpdatePermission(CrmTcAPI.Models.PermisosRol)">
+            <summary>
+            Crea o actualiza un permiso
+            </summary>
+            <param name="body">El permiso</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.PermissionsApiController.DeletePermission(System.Int32)">
+            <summary>
+            Elimina un permiso
+            </summary>
+            <param name="id">El id del permiso</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="T:IO.Swagger.Controllers.RolesApiController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Controllers.RolesApiController.GetRoles">
+            <summary>
+            Obtiene los roles
+            </summary>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.RolesApiController.AddRole(IO.Swagger.Models.Role)">
+            <summary>
+            Añade un rol
+            </summary>
+            <param name="body">El rol a añadir</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.RolesApiController.UpdateRole(System.Int32,IO.Swagger.Models.Role)">
+            <summary>
+            Actualiza un rol
+            </summary>
+            <param name="id">El id del rol</param>
+            <param name="body">El rol modificado</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.RolesApiController.DeleteRole(System.Int32)">
+            <summary>
+            Elimina un rol
+            </summary>
+            <param name="id">El id del rol</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.RolesApiController.GetRoleHistory(System.Int32)">
+            <summary>
+            Obtiene el historial de un rol
+            </summary>
+            <param name="id">El id del rol</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="T:IO.Swagger.Controllers.SessionsApiController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Controllers.SessionsApiController.Login(IO.Swagger.Models.Login)">
+            <summary>
+            Crea una nueva sesión
+            </summary>
+            <param name="body"></param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.SessionsApiController.Logout">
+            <summary>
+            Cierra la sesión actual
+            </summary>
+            <response code="200">OK</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="T:IO.Swagger.Controllers.SurveyApiController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Controllers.SurveyApiController.Create(TmsTcAPI.DAL.Models.Survey)">
+            <summary>
+            Generar una encuesta
+            </summary>
+            <param name="type"></param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.SurveyApiController.GetById(System.Nullable{System.Int32})">
+            <summary>
+            Obtener de encuestas del operador
+            </summary>
+            <param name="type"></param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.SurveyApiController.CreateResponse(IO.Swagger.Models.Answer)">
+            <summary>
+            Agrega el resultado de una encuesta
+            </summary>
+            <param name="type"></param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.SurveyApiController.GetAllQualifications">
+            <summary>
+            Listado de las calificaciones
+            </summary>
+            <response code="200">OK</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="T:IO.Swagger.Controllers.SystemParametersApiController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Controllers.SystemParametersApiController.GetSystemParameters">
+            <summary>
+            Obtiene los parametros del sistema
+            </summary>
+            <response code="200">OK</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.SystemParametersApiController.GetSystemParameterHistory(System.String,System.String)">
+            <summary>
+            Obtiene el historial de un parametro del sistema
+            </summary>
+            <param name="modulo">El modulo del parametro del sistema</param>
+            <param name="nombre">El nombre del parametro del sistema</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.SystemParametersApiController.UpdateSystemParameter(CrmTcAPI.Models.ParametroSistemaCustom)">
+            <summary>
+            Actualiza un parametro del sistema
+            </summary>
+            <param name="body">El parametro del sistema modificado</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="T:IO.Swagger.Controllers.TechnicalSupportApi">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Controllers.TechnicalSupportApi.UpdateSupportPassword(IO.Swagger.Models.LocationType)">
+            <summary>
+            Cambiar contraseña del operador
+            </summary>
+            <param name="type"></param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.TechnicalSupportApi.UpdateSupportRestorePassword(IO.Swagger.Models.LocationType)">
+            <summary>
+            Restaurar contraseña del operador
+            </summary>
+            <param name="type"></param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="T:IO.Swagger.Controllers.UsersApiController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Controllers.UsersApiController.CreateUser(IO.Swagger.Models.User,System.String)">
+            <summary>
+            Crea un nuevo usuario
+            </summary>
+            <param name="body"></param>
+            <param name="password">El hash de la contraseña del usuario</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.UsersApiController.DeleteUser(System.Nullable{System.Int32})">
+            <summary>
+            Desactiva la cuenta de un usuario
+            </summary>
+            <param name="id">El id del usuario</param>
+            <response code="200">OK</response>
+            <response code="401">Unauthorized</response>
+            <response code="404">Not Found</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.UsersApiController.GetUser(System.Nullable{System.Int32})">
+            <summary>
+            Obtiene un usuario
+            </summary>
+            <param name="id">El id del usuario</param>
+            <response code="200">OK</response>
+            <response code="401">Unauthorized</response>
+            <response code="404">Not Found</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.UsersApiController.GetUserPermissions(System.Int32)">
+            <summary>
+            Obtiene los permisos de un usuario
+            </summary>
+            <param name="id">El id del usuario</param>
+            <response code="200">OK</response>
+            <response code="401">Unauthorized</response>
+            <response code="404">Not Found</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.UsersApiController.GetUserTypes">
+            <summary>
+            Listado de tipos de usuarios en el sistema
+            </summary>
+            <response code="200">OK</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.UsersApiController.GetUsers(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Listado de usuarios en el sistema
+            </summary>
+            <param name="group">ID del grupo a incluir en el listado</param>
+            <param name="tipo">Tipo de usuarios a incluir en el listado</param>
+            <response code="200">OK</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.UsersApiController.UpdateUser(IO.Swagger.Models.User,System.Nullable{System.Int32})">
+            <summary>
+            Actualiza un usuario
+            </summary>
+            <param name="body"></param>
+            <param name="id">El id del usuario</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.UsersApiController.UpdateUserPassword(System.Nullable{System.Int32},IO.Swagger.Models.PasswordIdBody)">
+            <summary>
+            Actualiza la contraseña de un usuario
+            </summary>
+            <param name="id">El id del usuario</param>
+            <param name="body"></param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+            <response code="404">Not Found</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.UsersApiController.GetOperatorProfileById(System.Nullable{System.Int32})">
+            <summary>
+            Consulta de perfil del operador
+            </summary>
+            <param name="id">Id del usuario</param>
+            <response code="200">Success</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+            <response code="404">Not Found</response>
+        </member>
+        <member name="T:IO.Swagger.Controllers.ZonesApiController">
+            <summary>
+            Api encargada de las operaciones de tipos de mercado
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Controllers.ZonesApiController.GetZones(System.Nullable{System.Boolean})">
+            <summary>
+            Obtiene las zonas
+            </summary>
+            <param name="active">Si se especifica filtra por estado habilitado o deshabilitado</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.ZonesApiController.AddZone(IO.Swagger.Models.Zone)">
+            <summary>
+            Añade una Zona
+            </summary>
+            <param name="body">La zona a añadir</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.ZonesApiController.UpdateZone(System.Int32,IO.Swagger.Models.Zone)">
+            <summary>
+            Actualiza una zona
+            </summary>
+            <param name="id">El id de la zona</param>
+            <param name="body">El tipo de mercado modificado</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="M:IO.Swagger.Controllers.ZonesApiController.DeleteZone(System.Int32)">
+            <summary>
+            Elimina una Zona
+            </summary>
+            <param name="id">El id del tipo de la zona</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+        </member>
+        <member name="T:IO.Swagger.Filters.BasePathFilter">
+            <summary>
+            BasePath Document Filter sets BasePath property of Swagger and removes it from the individual URL paths
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Filters.BasePathFilter.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="basePath">BasePath to remove from Operations</param>
+        </member>
+        <member name="P:IO.Swagger.Filters.BasePathFilter.BasePath">
+            <summary>
+            Gets the BasePath of the Swagger Doc
+            </summary>
+            <returns>The BasePath of the Swagger Doc</returns>
+        </member>
+        <member name="M:IO.Swagger.Filters.BasePathFilter.Apply(Microsoft.OpenApi.Models.OpenApiDocument,Swashbuckle.AspNetCore.SwaggerGen.DocumentFilterContext)">
+            <summary>
+            Apply the filter
+            </summary>
+            <param name="swaggerDoc">OpenApiDocument</param>
+            <param name="context">FilterContext</param>
+        </member>
+        <member name="T:IO.Swagger.Filters.GeneratePathParamsValidationFilter">
+            <summary>
+            Path Parameter Validation Rules Filter
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Filters.GeneratePathParamsValidationFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="operation">Operation</param>
+            <param name="context">OperationFilterContext</param>
+        </member>
+        <member name="T:IO.Swagger.Models.Answer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.Answer.Id">
+            <summary>
+            Gets or Sets Id
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.Answer.NonBudgetedExpenseId">
+            <summary>
+            Gets or Sets NonBudgetedExpenseId
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.Answer.Answers">
+            <summary>
+            Gets or Sets Answers
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Models.Answer.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Answer.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Answer.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Answer.Equals(IO.Swagger.Models.Answer)">
+            <summary>
+            Returns true if Answer instances are equal
+            </summary>
+            <param name="other">Instance of Answer to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Answer.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.BaseEntity">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.BaseEntity.Id">
+            <summary>
+            El id de esta entidad
+            </summary>
+            <value>El id de esta entidad</value>
+        </member>
+        <member name="P:IO.Swagger.Models.BaseEntity.Name">
+            <summary>
+            El nombre descriptivo de esta entidad
+            </summary>
+            <value>El nombre descriptivo de esta entidad</value>
+        </member>
+        <member name="P:IO.Swagger.Models.BaseEntity.Active">
+            <summary>
+            La entidad se encuentra activa
+            </summary>
+            <value>La entidad se encuentra activa</value>
+        </member>
+        <member name="P:IO.Swagger.Models.BaseEntity.CreatedBy">
+            <summary>
+            El id del usuario que creo esta entidad
+            </summary>
+            <value>El id del usuario que creo esta entidad</value>
+        </member>
+        <member name="P:IO.Swagger.Models.BaseEntity.CreatedAt">
+            <summary>
+            La fecha de creación de la entidad
+            </summary>
+            <value>La fecha de creación de la entidad</value>
+        </member>
+        <member name="P:IO.Swagger.Models.BaseEntity.UpdatedBy">
+            <summary>
+            El id del último usuario que actualizo esta entidad
+            </summary>
+            <value>El id del último usuario que actualizo esta entidad</value>
+        </member>
+        <member name="P:IO.Swagger.Models.BaseEntity.UpdatedAt">
+            <summary>
+            La fecha de la última actualización de la entidad
+            </summary>
+            <value>La fecha de la última actualización de la entidad</value>
+        </member>
+        <member name="M:IO.Swagger.Models.BaseEntity.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.BaseEntity.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.BaseEntity.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.BaseEntity.Equals(IO.Swagger.Models.BaseEntity)">
+            <summary>
+            Returns true if BaseEntity instances are equal
+            </summary>
+            <param name="other">Instance of BaseEntity to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.BaseEntity.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.Customer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.Customer.Id">
+            <summary>
+            El id de este cliente
+            </summary>
+            <value>El id de este cliente</value>
+        </member>
+        <member name="P:IO.Swagger.Models.Customer.Name">
+            <summary>
+            El nombre del cliente
+            </summary>
+            <value>El nombre del cliente</value>
+        </member>
+        <member name="P:IO.Swagger.Models.Customer.Description">
+            <summary>
+            El alias del cliente
+            </summary>
+            <value>El alias del cliente</value>
+        </member>
+        <member name="P:IO.Swagger.Models.Customer.Logo">
+            <summary>
+            Gets or Sets Logo
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Models.Customer.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Customer.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Customer.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Customer.Equals(IO.Swagger.Models.Customer)">
+            <summary>
+            Returns true if Customer instances are equal
+            </summary>
+            <param name="other">Instance of Customer to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Customer.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.DataSeries">
+            <summary>
+            Representa un elemento individual de una serie de datos en función del tiempo
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.DataSeries.Value">
+            <summary>
+            Valor o coordenada en Y
+            </summary>
+            <value>Valor o coordenada en Y</value>
+        </member>
+        <member name="P:IO.Swagger.Models.DataSeries.Date">
+            <summary>
+            Fecha o coordenada en X
+            </summary>
+            <value>Fecha o coordenada en X</value>
+        </member>
+        <member name="M:IO.Swagger.Models.DataSeries.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.DataSeries.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.DataSeries.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.DataSeries.Equals(IO.Swagger.Models.DataSeries)">
+            <summary>
+            Returns true if DataSeries instances are equal
+            </summary>
+            <param name="other">Instance of DataSeries to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.DataSeries.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.Department">
+            <summary>
+            Objeto departamento
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.Department.Id">
+            <summary>
+            Gets or Sets Id
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.Department.Key">
+            <summary>
+            Gets or Sets Key
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.Department.Name">
+            <summary>
+            Gets or Sets Name
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.Department.Description">
+            <summary>
+            Gets or Sets Description
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.Department.Details">
+            <summary>
+            Gets or Sets Active
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.Department.Active">
+            <summary>
+            Gets or Sets Active
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.Department.CreatedBy">
+            <summary>
+            Gets or Sets CreatedBy
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.Department.CreatedAt">
+            <summary>
+            Gets or Sets CreatedAt
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.Department.UpdatedBy">
+            <summary>
+            Gets or Sets UpdatedBy
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.Department.UpdatedAt">
+            <summary>
+            Gets or Sets UpdatedAt
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Models.Department.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Department.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Department.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Department.Equals(IO.Swagger.Models.Department)">
+            <summary>
+            Returns true if Department instances are equal
+            </summary>
+            <param name="other">Instance of Department to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Department.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.FleetLoadedVsEmpty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.FleetLoadedVsEmpty.Fecha">
+            <summary>
+            Fecha del movimiento
+            </summary>
+            <value>Fecha del movimiento</value>
+        </member>
+        <member name="P:IO.Swagger.Models.FleetLoadedVsEmpty.TruckStatusid">
+            <summary>
+            Estatus del tractor
+            </summary>
+            <value>Estatus del tractor</value>
+        </member>
+        <member name="P:IO.Swagger.Models.FleetLoadedVsEmpty.Truckid">
+            <summary>
+            Id del tractor
+            </summary>
+            <value>Id del tractor</value>
+        </member>
+        <member name="P:IO.Swagger.Models.FleetLoadedVsEmpty.Cargado">
+            <summary>
+            Texto que determina si está o no cargado
+            </summary>
+            <value>Texto que determina si está o no cargado</value>
+        </member>
+        <member name="P:IO.Swagger.Models.FleetLoadedVsEmpty.Name">
+            <summary>
+            Nombre del tractor
+            </summary>
+            <value>Nombre del tractor</value>
+        </member>
+        <member name="P:IO.Swagger.Models.FleetLoadedVsEmpty.Description">
+            <summary>
+            Descripción del tractor
+            </summary>
+            <value>Descripción del tractor</value>
+        </member>
+        <member name="P:IO.Swagger.Models.FleetLoadedVsEmpty.GivenName">
+            <summary>
+            Nombre del operador
+            </summary>
+            <value>Nombre del operador</value>
+        </member>
+        <member name="M:IO.Swagger.Models.FleetLoadedVsEmpty.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.FleetLoadedVsEmpty.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.FleetLoadedVsEmpty.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.FleetLoadedVsEmpty.Equals(IO.Swagger.Models.FleetLoadedVsEmpty)">
+            <summary>
+            Returns true if FleetLoadedVsEmpty instances are equal
+            </summary>
+            <param name="other">Instance of FleetLoadedVsEmpty to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.FleetLoadedVsEmpty.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.FleetMetrics">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.FleetMetrics.Total">
+            <summary>
+            Total
+            </summary>
+            <value>Total</value>
+        </member>
+        <member name="P:IO.Swagger.Models.FleetMetrics.Transit">
+            <summary>
+            En tránsito
+            </summary>
+            <value>En tránsito</value>
+        </member>
+        <member name="P:IO.Swagger.Models.FleetMetrics.Loading">
+            <summary>
+            Cargando
+            </summary>
+            <value>Cargando</value>
+        </member>
+        <member name="P:IO.Swagger.Models.FleetMetrics.Available">
+            <summary>
+            Disponible en base sin asignacion
+            </summary>
+            <value>Disponible en base sin asignacion</value>
+        </member>
+        <member name="P:IO.Swagger.Models.FleetMetrics.NotAvailable">
+            <summary>
+            No disponbiles por taller
+            </summary>
+            <value>No disponbiles por taller</value>
+        </member>
+        <member name="P:IO.Swagger.Models.FleetMetrics.Maintenance">
+            <summary>
+            En mantenimiento
+            </summary>
+            <value>En mantenimiento</value>
+        </member>
+        <member name="P:IO.Swagger.Models.FleetMetrics.Accident">
+            <summary>
+            Accidentado
+            </summary>
+            <value>Accidentado</value>
+        </member>
+        <member name="M:IO.Swagger.Models.FleetMetrics.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.FleetMetrics.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.FleetMetrics.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.FleetMetrics.Equals(IO.Swagger.Models.FleetMetrics)">
+            <summary>
+            Returns true if FleetMetrics instances are equal
+            </summary>
+            <param name="other">Instance of FleetMetrics to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.FleetMetrics.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.ForecastVsReal">
+            <summary>
+            Serie de datos para la gráfica Forecast vs Real
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.ForecastVsReal.MarketType">
+            <summary>
+            El id del tipo de mercado
+            </summary>
+            <value>El id del tipo de mercado</value>
+        </member>
+        <member name="P:IO.Swagger.Models.ForecastVsReal.Customer">
+            <summary>
+            El id del cliente
+            </summary>
+            <value>El id del cliente</value>
+        </member>
+        <member name="P:IO.Swagger.Models.ForecastVsReal.Office">
+            <summary>
+            El id de la oficina
+            </summary>
+            <value>El id de la oficina</value>
+        </member>
+        <member name="P:IO.Swagger.Models.ForecastVsReal.Date">
+            <summary>
+            fecha
+            </summary>
+            <value>fecha</value>
+        </member>
+        <member name="P:IO.Swagger.Models.ForecastVsReal.VinsPlanned">
+            <summary>
+            los viajes planeados
+            </summary>
+            <value>los viajes planeados</value>
+        </member>
+        <member name="P:IO.Swagger.Models.ForecastVsReal.VinsLoaded">
+            <summary>
+            los viajes cargados
+            </summary>
+            <value>los viajes cargados</value>
+        </member>
+        <member name="P:IO.Swagger.Models.ForecastVsReal.VinsPositioned">
+            <summary>
+            los viajes posicionados
+            </summary>
+            <value>los viajes posicionados</value>
+        </member>
+        <member name="M:IO.Swagger.Models.ForecastVsReal.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.ForecastVsReal.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.ForecastVsReal.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.ForecastVsReal.Equals(IO.Swagger.Models.ForecastVsReal)">
+            <summary>
+            Returns true if ForecastVsReal instances are equal
+            </summary>
+            <param name="other">Instance of ForecastVsReal to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.ForecastVsReal.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.Functionality">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Models.Functionality.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Functionality.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Functionality.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Functionality.Equals(IO.Swagger.Models.Functionality)">
+            <summary>
+            Returns true if Functionality instances are equal
+            </summary>
+            <param name="other">Instance of Functionality to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Functionality.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.LoadPlansMetrics">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.LoadPlansMetrics.Date">
+            <summary>
+            Fecha
+            </summary>
+            <value>Fecha</value>
+        </member>
+        <member name="P:IO.Swagger.Models.LoadPlansMetrics.Trucks">
+            <summary>
+            Gets or Sets Trucks
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.LoadPlansMetrics.Fleet">
+            <summary>
+            Gets or Sets Fleet
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.LoadPlansMetrics.TruckOperators">
+            <summary>
+            Gets or Sets TruckOperators
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Models.LoadPlansMetrics.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.LoadPlansMetrics.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.LoadPlansMetrics.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.LoadPlansMetrics.Equals(IO.Swagger.Models.LoadPlansMetrics)">
+            <summary>
+            Returns true if LoadPlansMetrics instances are equal
+            </summary>
+            <param name="other">Instance of LoadPlansMetrics to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.LoadPlansMetrics.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.LocationType">
+            <summary>
+            Gets or Sets LocationType
+            </summary>
+        </member>
+        <member name="F:IO.Swagger.Models.LocationType.Origin">
+            <summary>
+            Enum OriginEnum for origin
+            </summary>
+        </member>
+        <member name="F:IO.Swagger.Models.LocationType.Destination">
+            <summary>
+            Enum DestinationEnum for destination
+            </summary>
+        </member>
+        <member name="F:IO.Swagger.Models.LocationType.Office">
+            <summary>
+            Enum OfficeEnum for office
+            </summary>
+        </member>
+        <member name="T:IO.Swagger.Models.Login">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.Login.Email">
+            <summary>
+            El correo del usuario
+            </summary>
+            <value>El correo del usuario</value>
+        </member>
+        <member name="P:IO.Swagger.Models.Login.Password">
+            <summary>
+            El hash de la contraseña del usuario
+            </summary>
+            <value>El hash de la contraseña del usuario</value>
+        </member>
+        <member name="M:IO.Swagger.Models.Login.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Login.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Login.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Login.Equals(IO.Swagger.Models.Login)">
+            <summary>
+            Returns true if Login instances are equal
+            </summary>
+            <param name="other">Instance of Login to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Login.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.Module">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Models.Module.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Module.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Module.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Module.Equals(IO.Swagger.Models.Module)">
+            <summary>
+            Returns true if Module instances are equal
+            </summary>
+            <param name="other">Instance of Module to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Module.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.OperatorInformation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.OperatorInformation.IdOperator">
+            <summary>
+            Id del operador
+            </summary>
+            <value>Id del operador</value>
+        </member>
+        <member name="P:IO.Swagger.Models.OperatorInformation.Rating">
+            <summary>
+            Rating del operador
+            </summary>
+            <value>Rating del operador</value>
+        </member>
+        <member name="P:IO.Swagger.Models.OperatorInformation.Truck">
+            <summary>
+            Tractor asignado del operador
+            </summary>
+            <value>Tractor asignado del operador</value>
+        </member>
+        <member name="P:IO.Swagger.Models.OperatorInformation.Towing">
+            <summary>
+            Remolques asignados al tractor
+            </summary>
+            <value>Remolques asignados al tractor</value>
+        </member>
+        <member name="M:IO.Swagger.Models.OperatorInformation.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.OperatorInformation.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.OperatorInformation.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.OperatorInformation.Equals(IO.Swagger.Models.OperatorInformation)">
+            <summary>
+            Returns true if OperatorInformation instances are equal
+            </summary>
+            <param name="other">Instance of OperatorInformation to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.OperatorInformation.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.OperatorProfile">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.OperatorProfile.Code">
+            <summary>
+            Status code
+            </summary>
+            <value>Status code</value>
+        </member>
+        <member name="P:IO.Swagger.Models.OperatorProfile.Message">
+            <summary>
+            Mensaje de respuesta
+            </summary>
+            <value>Mensaje de respuesta</value>
+        </member>
+        <member name="P:IO.Swagger.Models.OperatorProfile.Data">
+            <summary>
+            Gets or Sets Data
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Models.OperatorProfile.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.OperatorProfile.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.OperatorProfile.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.OperatorProfile.Equals(IO.Swagger.Models.OperatorProfile)">
+            <summary>
+            Returns true if OperatorProfile instances are equal
+            </summary>
+            <param name="other">Instance of OperatorProfile to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.OperatorProfile.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.OperatorProfileData">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.OperatorProfileData.OperatorInformation">
+            <summary>
+            Gets or Sets OperatorInformation
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.OperatorProfileData.PersonalInformation">
+            <summary>
+            Gets or Sets PersonalInformation
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Models.OperatorProfileData.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.OperatorProfileData.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.OperatorProfileData.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.OperatorProfileData.Equals(IO.Swagger.Models.OperatorProfileData)">
+            <summary>
+            Returns true if OperatorProfileData instances are equal
+            </summary>
+            <param name="other">Instance of OperatorProfileData to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.OperatorProfileData.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.PasswordIdBody">
+            <summary>
+            La contraseña del usuario
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.PasswordIdBody.Password">
+            <summary>
+            Gets or Sets Password
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Models.PasswordIdBody.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.PasswordIdBody.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.PasswordIdBody.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.PasswordIdBody.Equals(IO.Swagger.Models.PasswordIdBody)">
+            <summary>
+            Returns true if PasswordIdBody instances are equal
+            </summary>
+            <param name="other">Instance of PasswordIdBody to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.PasswordIdBody.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.PersonalInformation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.PersonalInformation.GivenName">
+            <summary>
+            Nombre completo operador
+            </summary>
+            <value>Nombre completo operador</value>
+        </member>
+        <member name="P:IO.Swagger.Models.PersonalInformation.Email">
+            <summary>
+            El email del operador
+            </summary>
+            <value>El email del operador</value>
+        </member>
+        <member name="P:IO.Swagger.Models.PersonalInformation.Birthday">
+            <summary>
+            Fecha nacimiento del operador
+            </summary>
+            <value>Fecha nacimiento del operador</value>
+        </member>
+        <member name="P:IO.Swagger.Models.PersonalInformation.EntryDate">
+            <summary>
+            Fecha ingreso del operador
+            </summary>
+            <value>Fecha ingreso del operador</value>
+        </member>
+        <member name="P:IO.Swagger.Models.PersonalInformation.PicturePath">
+            <summary>
+            Url fotografia
+            </summary>
+            <value>Url fotografia</value>
+        </member>
+        <member name="M:IO.Swagger.Models.PersonalInformation.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.PersonalInformation.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.PersonalInformation.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.PersonalInformation.Equals(IO.Swagger.Models.PersonalInformation)">
+            <summary>
+            Returns true if PersonalInformation instances are equal
+            </summary>
+            <param name="other">Instance of PersonalInformation to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.PersonalInformation.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.Qualification">
+            <summary>
+            Es la calificacion de la encuesta
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.Qualification.Id">
+            <summary>
+            Gets or Sets Id
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.Qualification.Description">
+            <summary>
+            Gets or Sets Description
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.Qualification.Value">
+            <summary>
+            Gets or Sets Value
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Models.Qualification.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Qualification.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Qualification.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Qualification.Equals(IO.Swagger.Models.Qualification)">
+            <summary>
+            Returns true if Qualification instances are equal
+            </summary>
+            <param name="other">Instance of Qualification to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Qualification.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.Role">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.Role.Description">
+            <summary>
+            La descripción de esta entidad
+            </summary>
+            <value>La descripción de esta entidad</value>
+        </member>
+        <member name="P:IO.Swagger.Models.Role.IdActiveDirectory">
+            <summary>
+            El identificador del directorio activo
+            </summary>
+            <value>El identificador del directorio activo</value>
+        </member>
+        <member name="M:IO.Swagger.Models.Role.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Role.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Role.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Role.Equals(IO.Swagger.Models.Role)">
+            <summary>
+            Returns true if Role instances are equal
+            </summary>
+            <param name="other">Instance of Role to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Role.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.Session">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.Session.Token">
+            <summary>
+            El token de autorización para las peticiones
+            </summary>
+            <value>El token de autorización para las peticiones</value>
+        </member>
+        <member name="P:IO.Swagger.Models.Session.Expires">
+            <summary>
+            El momento en el que expirara el token
+            </summary>
+            <value>El momento en el que expirara el token</value>
+        </member>
+        <member name="P:IO.Swagger.Models.Session.User">
+            <summary>
+            Gets or Sets User
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.Session.Message">
+            <summary>
+            Gets or Sets Message
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Models.Session.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Session.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Session.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Session.Equals(IO.Swagger.Models.Session)">
+            <summary>
+            Returns true if Session instances are equal
+            </summary>
+            <param name="other">Instance of Session to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Session.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.SurverQuestion">
+            <summary>
+            Es la pregunta que se le hace al operador
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.SurverQuestion.Id">
+            <summary>
+            Gets or Sets Id
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.SurverQuestion.Description">
+            <summary>
+            Gets or Sets Description
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Models.SurverQuestion.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.SurverQuestion.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.SurverQuestion.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.SurverQuestion.Equals(IO.Swagger.Models.SurverQuestion)">
+            <summary>
+            Returns true if SurverQuestion instances are equal
+            </summary>
+            <param name="other">Instance of SurverQuestion to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.SurverQuestion.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.Survey">
+            <summary>
+            Se encuentran las preguntas que se enviaran al operador
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.Survey.Id">
+            <summary>
+            Gets or Sets Id
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.Survey.Title">
+            <summary>
+            Gets or Sets Title
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.Survey.SurveyQuestions">
+            <summary>
+            Gets or Sets SurveyQuestions
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Models.Survey.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Survey.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Survey.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Survey.Equals(IO.Swagger.Models.Survey)">
+            <summary>
+            Returns true if Survey instances are equal
+            </summary>
+            <param name="other">Instance of Survey to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.Survey.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.SurveyResponse">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.SurveyResponse.IdQuestion">
+            <summary>
+            Gets or Sets IdQuestion
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.SurveyResponse.IdQualification">
+            <summary>
+            Gets or Sets IdQualification
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Models.SurveyResponse.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.SurveyResponse.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.SurveyResponse.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.SurveyResponse.Equals(IO.Swagger.Models.SurveyResponse)">
+            <summary>
+            Returns true if SurveyResponse instances are equal
+            </summary>
+            <param name="other">Instance of SurveyResponse to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.SurveyResponse.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.SurveyResponses">
+            <summary>
+            Aqui se encuentran las respuestas de la encuesta por el operador
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.SurveyResponses.IdSurvey">
+            <summary>
+            Gets or Sets IdSurvey
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.SurveyResponses.IdOperator">
+            <summary>
+            Gets or Sets IdOperator
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.SurveyResponses._SurveyResponses">
+            <summary>
+            Gets or Sets _SurveyResponses
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Models.SurveyResponses.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.SurveyResponses.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.SurveyResponses.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.SurveyResponses.Equals(IO.Swagger.Models.SurveyResponses)">
+            <summary>
+            Returns true if SurveyResponses instances are equal
+            </summary>
+            <param name="other">Instance of SurveyResponses to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.SurveyResponses.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.TripsMadeVsCancelled">
+            <summary>
+            Serie de datos para la gráfica Viajes Realizados vs Cancelados
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.TripsMadeVsCancelled.TripsMade">
+            <summary>
+            Gets or Sets TripsMade
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.TripsMadeVsCancelled.TripsCancelled">
+            <summary>
+            Gets or Sets TripsCancelled
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Models.TripsMadeVsCancelled.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.TripsMadeVsCancelled.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.TripsMadeVsCancelled.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.TripsMadeVsCancelled.Equals(IO.Swagger.Models.TripsMadeVsCancelled)">
+            <summary>
+            Returns true if TripsMadeVsCancelled instances are equal
+            </summary>
+            <param name="other">Instance of TripsMadeVsCancelled to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.TripsMadeVsCancelled.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.TruckOperatorsMetrics">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.TruckOperatorsMetrics.Total">
+            <summary>
+            Total
+            </summary>
+            <value>Total</value>
+        </member>
+        <member name="P:IO.Swagger.Models.TruckOperatorsMetrics.Operation">
+            <summary>
+            En operación
+            </summary>
+            <value>En operación</value>
+        </member>
+        <member name="P:IO.Swagger.Models.TruckOperatorsMetrics.Available">
+            <summary>
+            Disponibles
+            </summary>
+            <value>Disponibles</value>
+        </member>
+        <member name="P:IO.Swagger.Models.TruckOperatorsMetrics.WorkBreak">
+            <summary>
+            En descanso
+            </summary>
+            <value>En descanso</value>
+        </member>
+        <member name="P:IO.Swagger.Models.TruckOperatorsMetrics.Liquidate">
+            <summary>
+            Por liquidar
+            </summary>
+            <value>Por liquidar</value>
+        </member>
+        <member name="P:IO.Swagger.Models.TruckOperatorsMetrics.Training">
+            <summary>
+            En capacitación
+            </summary>
+            <value>En capacitación</value>
+        </member>
+        <member name="P:IO.Swagger.Models.TruckOperatorsMetrics.SpecialPermission">
+            <summary>
+            Permisos Especiales
+            </summary>
+            <value>Permisos Especiales</value>
+        </member>
+        <member name="P:IO.Swagger.Models.TruckOperatorsMetrics.Disabled">
+            <summary>
+            Incapacitado
+            </summary>
+            <value>Incapacitado</value>
+        </member>
+        <member name="P:IO.Swagger.Models.TruckOperatorsMetrics.Vacation">
+            <summary>
+            En vacaciones
+            </summary>
+            <value>En vacaciones</value>
+        </member>
+        <member name="M:IO.Swagger.Models.TruckOperatorsMetrics.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.TruckOperatorsMetrics.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.TruckOperatorsMetrics.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.TruckOperatorsMetrics.Equals(IO.Swagger.Models.TruckOperatorsMetrics)">
+            <summary>
+            Returns true if TruckOperatorsMetrics instances are equal
+            </summary>
+            <param name="other">Instance of TruckOperatorsMetrics to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.TruckOperatorsMetrics.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.TrucksMetrics">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.TrucksMetrics.Required">
+            <summary>
+            Total equipo requerido
+            </summary>
+            <value>Total equipo requerido</value>
+        </member>
+        <member name="P:IO.Swagger.Models.TrucksMetrics.Loaded">
+            <summary>
+            Total equipo cargado
+            </summary>
+            <value>Total equipo cargado</value>
+        </member>
+        <member name="P:IO.Swagger.Models.TrucksMetrics.Positioned">
+            <summary>
+            Total equipo posicionado
+            </summary>
+            <value>Total equipo posicionado</value>
+        </member>
+        <member name="P:IO.Swagger.Models.TrucksMetrics.NoScheduledLoad">
+            <summary>
+            Equipo sin programa de carga
+            </summary>
+            <value>Equipo sin programa de carga</value>
+        </member>
+        <member name="P:IO.Swagger.Models.TrucksMetrics.LoadedVsFleet">
+            <summary>
+            Porcentaje de flota cargada
+            </summary>
+            <value>Porcentaje de flota cargada</value>
+        </member>
+        <member name="P:IO.Swagger.Models.TrucksMetrics.LoadedVsForecast">
+            <summary>
+            Porcentaje Forecast vs Posicionado Cargado
+            </summary>
+            <value>Porcentaje Forecast vs Posicionado Cargado</value>
+        </member>
+        <member name="M:IO.Swagger.Models.TrucksMetrics.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.TrucksMetrics.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.TrucksMetrics.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.TrucksMetrics.Equals(IO.Swagger.Models.TrucksMetrics)">
+            <summary>
+            Returns true if TrucksMetrics instances are equal
+            </summary>
+            <param name="other">Instance of TrucksMetrics to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.TrucksMetrics.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.TrucksUsage">
+            <summary>
+            Serie de datos para la gráfica Uso de Equipo Actual
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.TrucksUsage._TrucksUsage">
+            <summary>
+            Gets or Sets _TrucksUsage
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Models.TrucksUsage.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.TrucksUsage.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.TrucksUsage.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.TrucksUsage.Equals(IO.Swagger.Models.TrucksUsage)">
+            <summary>
+            Returns true if TrucksUsage instances are equal
+            </summary>
+            <param name="other">Instance of TrucksUsage to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.TrucksUsage.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.UltimaActualizacion">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.UltimaActualizacion.Fecha">
+            <summary>
+            Gets or Sets Fecha
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Models.UltimaActualizacion.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.UltimaActualizacion.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.UltimaActualizacion.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.UltimaActualizacion.Equals(IO.Swagger.Models.UltimaActualizacion)">
+            <summary>
+            Returns true if UltimaActualizacion instances are equal
+            </summary>
+            <param name="other">Instance of UltimaActualizacion to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.UltimaActualizacion.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.User">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.User.GivenName">
+            <summary>
+            Gets or Sets GivenName
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.User.PaternalSurname">
+            <summary>
+            Gets or Sets PaternalSurname
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.User.MaternalSurname">
+            <summary>
+            Gets or Sets MaternalSurname
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.User.Image">
+            <summary>
+            Gets or Sets Image
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.User.RoleId">
+            <summary>
+            El id del rol de usuario
+            </summary>
+            <value>El id del rol de usuario</value>
+        </member>
+        <member name="P:IO.Swagger.Models.User.Email">
+            <summary>
+            El email del usuario
+            </summary>
+            <value>El email del usuario</value>
+        </member>
+        <member name="P:IO.Swagger.Models.User.IsFirstLogin">
+            <summary>
+            Determina si es la primera vez que se usa la aplicación
+            </summary>
+            <value>Determina si es la primera vez que se usa la aplicación</value>
+        </member>
+        <member name="P:IO.Swagger.Models.User.Roles">
+            <summary>
+            Los id de grupo en los que se encuentra el usuario
+            </summary>
+            <value>Los id de grupo en los que se encuentra el usuario</value>
+        </member>
+        <member name="P:IO.Swagger.Models.User.Id">
+            <summary>
+            El id de esta entidad
+            </summary>
+            <value>El id de esta entidad</value>
+        </member>
+        <member name="P:IO.Swagger.Models.User.Name">
+            <summary>
+            El nombre descriptivo de esta entidad
+            </summary>
+            <value>El nombre descriptivo de esta entidad</value>
+        </member>
+        <member name="P:IO.Swagger.Models.User.Active">
+            <summary>
+            La entidad se encuentra activa
+            </summary>
+            <value>La entidad se encuentra activa</value>
+        </member>
+        <member name="P:IO.Swagger.Models.User.CreatedBy">
+            <summary>
+            El id del usuario que creo esta entidad
+            </summary>
+            <value>El id del usuario que creo esta entidad</value>
+        </member>
+        <member name="P:IO.Swagger.Models.User.CreatedAt">
+            <summary>
+            La fecha de creación de la entidad
+            </summary>
+            <value>La fecha de creación de la entidad</value>
+        </member>
+        <member name="P:IO.Swagger.Models.User.UpdatedBy">
+            <summary>
+            El id del último usuario que actualizo esta entidad
+            </summary>
+            <value>El id del último usuario que actualizo esta entidad</value>
+        </member>
+        <member name="P:IO.Swagger.Models.User.UpdatedAt">
+            <summary>
+            La fecha de la última actualización de la entidad
+            </summary>
+            <value>La fecha de la última actualización de la entidad</value>
+        </member>
+        <member name="M:IO.Swagger.Models.User.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.User.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.User.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.User.Equals(IO.Swagger.Models.User)">
+            <summary>
+            Returns true if User instances are equal
+            </summary>
+            <param name="other">Instance of User to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.User.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.UserTypes">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Models.UserTypes.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.UserTypes.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.UserTypes.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.UserTypes.Equals(IO.Swagger.Models.UserTypes)">
+            <summary>
+            Returns true if UserTypes instances are equal
+            </summary>
+            <param name="other">Instance of UserTypes to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.UserTypes.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.UserUpdatePassword">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.UserUpdatePassword.Code">
+            <summary>
+            Status Code
+            </summary>
+            <value>Status Code</value>
+        </member>
+        <member name="P:IO.Swagger.Models.UserUpdatePassword.Message">
+            <summary>
+            Descripcion de respuesta
+            </summary>
+            <value>Descripcion de respuesta</value>
+        </member>
+        <member name="P:IO.Swagger.Models.UserUpdatePassword.Data">
+            <summary>
+            Gets or Sets Data
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Models.UserUpdatePassword.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.UserUpdatePassword.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.UserUpdatePassword.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.UserUpdatePassword.Equals(IO.Swagger.Models.UserUpdatePassword)">
+            <summary>
+            Returns true if UserUpdatePassword instances are equal
+            </summary>
+            <param name="other">Instance of UserUpdatePassword to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.UserUpdatePassword.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Models.UserUpdatePasswordData">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:IO.Swagger.Models.UserUpdatePasswordData.Result">
+            <summary>
+            Contraseña actualizada con exito
+            </summary>
+            <value>Contraseña actualizada con exito</value>
+        </member>
+        <member name="M:IO.Swagger.Models.UserUpdatePasswordData.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.UserUpdatePasswordData.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.UserUpdatePasswordData.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.UserUpdatePasswordData.Equals(IO.Swagger.Models.UserUpdatePasswordData)">
+            <summary>
+            Returns true if UserUpdatePasswordData instances are equal
+            </summary>
+            <param name="other">Instance of UserUpdatePasswordData to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:IO.Swagger.Models.UserUpdatePasswordData.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:IO.Swagger.Program">
+            <summary>
+            Program
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Program.Main(System.String[])">
+            <summary>
+            Main
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:IO.Swagger.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            Create the web host builder.
+            </summary>
+            <param name="args"></param>
+            <returns>IWebHostBuilder</returns>
+        </member>
+        <member name="T:IO.Swagger.Startup">
+            <summary>
+            Startup
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Startup.#ctor(Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="env"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:IO.Swagger.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:IO.Swagger.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+            <param name="loggerFactory"></param>
+        </member>
+    </members>
+</doc>

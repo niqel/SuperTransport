@@ -1,0 +1,11 @@
+C:\Softm\Git\tc-tms-apiapp\DAO\CrmTc.DAL\bin\Debug\netcoreapp3.1\CrmTc.DAL.deps.json
+C:\Softm\Git\tc-tms-apiapp\DAO\CrmTc.DAL\bin\Debug\netcoreapp3.1\CrmTc.DAL.runtimeconfig.json
+C:\Softm\Git\tc-tms-apiapp\DAO\CrmTc.DAL\bin\Debug\netcoreapp3.1\CrmTc.DAL.runtimeconfig.dev.json
+C:\Softm\Git\tc-tms-apiapp\DAO\CrmTc.DAL\bin\Debug\netcoreapp3.1\CrmTc.DAL.dll
+C:\Softm\Git\tc-tms-apiapp\DAO\CrmTc.DAL\bin\Debug\netcoreapp3.1\CrmTc.DAL.pdb
+C:\Softm\Git\tc-tms-apiapp\DAO\CrmTc.DAL\obj\Debug\netcoreapp3.1\CrmTc.DAL.AssemblyInfoInputs.cache
+C:\Softm\Git\tc-tms-apiapp\DAO\CrmTc.DAL\obj\Debug\netcoreapp3.1\CrmTc.DAL.AssemblyInfo.cs
+C:\Softm\Git\tc-tms-apiapp\DAO\CrmTc.DAL\obj\Debug\netcoreapp3.1\CrmTc.DAL.dll
+C:\Softm\Git\tc-tms-apiapp\DAO\CrmTc.DAL\obj\Debug\netcoreapp3.1\CrmTc.DAL.pdb
+C:\Softm\Git\tc-tms-apiapp\DAO\CrmTc.DAL\obj\Debug\netcoreapp3.1\CrmTc.DAL.genruntimeconfig.cache
+C:\Softm\Git\tc-tms-apiapp\DAO\CrmTc.DAL\obj\Debug\netcoreapp3.1\CrmTc.DAL.csprojAssemblyReference.cache

@@ -1,0 +1,373 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Rutas.Api</name>
+    </assembly>
+    <members>
+        <member name="T:IO.Swagger.Attributes.ValidateModelStateAttribute">
+            <summary>
+            Model state validation attribute
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Attributes.ValidateModelStateAttribute.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            Called before the action method is invoked
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:IO.Swagger.Filters.BasePathFilter">
+            <summary>
+            BasePath Document Filter sets BasePath property of Swagger and removes it from the individual URL paths
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Filters.BasePathFilter.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="basePath">BasePath to remove from Operations</param>
+        </member>
+        <member name="P:IO.Swagger.Filters.BasePathFilter.BasePath">
+            <summary>
+            Gets the BasePath of the Swagger Doc
+            </summary>
+            <returns>The BasePath of the Swagger Doc</returns>
+        </member>
+        <member name="M:IO.Swagger.Filters.BasePathFilter.Apply(Microsoft.OpenApi.Models.OpenApiDocument,Swashbuckle.AspNetCore.SwaggerGen.DocumentFilterContext)">
+            <summary>
+            Apply the filter
+            </summary>
+            <param name="swaggerDoc">OpenApiDocument</param>
+            <param name="context">FilterContext</param>
+        </member>
+        <member name="T:IO.Swagger.Filters.GeneratePathParamsValidationFilter">
+            <summary>
+            Path Parameter Validation Rules Filter
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Filters.GeneratePathParamsValidationFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="operation">Operation</param>
+            <param name="context">OperationFilterContext</param>
+        </member>
+        <member name="T:IO.Swagger.Program">
+            <summary>
+            Program
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Program.Main(System.String[])">
+            <summary>
+            Main
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:IO.Swagger.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            Create the web host builder.
+            </summary>
+            <param name="args"></param>
+            <returns>IWebHostBuilder</returns>
+        </member>
+        <member name="T:IO.Swagger.Startup">
+            <summary>
+            Startup
+            </summary>
+        </member>
+        <member name="M:IO.Swagger.Startup.#ctor(Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="env"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:IO.Swagger.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:IO.Swagger.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+            <param name="loggerFactory"></param>
+        </member>
+        <member name="M:TmsTcAPI.BLL.Other.Base32.ToBase32String(System.Byte[])">
+            <summary>
+            Converts an array of bytes to a Base32-k string.
+            </summary>
+        </member>
+        <member name="M:TmsTcAPI.BLL.Other.Base32.FromBase32String(System.String)">
+            <summary>
+            Converts a Base32-k string into an array of bytes.
+            </summary>
+            <exception cref="T:System.ArgumentException">
+            Input string <paramref name="s">s</paramref> contains invalid Base32-k characters.
+            </exception>
+        </member>
+        <member name="M:TmsTcAPI.Controllers.CotizacionController.ObtenerOrigenes(System.String,System.String,System.Int32,System.Single,System.Single)">
+            <summary>
+            Regresa la consulta de Paises
+            </summary>
+            <returns>string lista de paises</returns>
+        </member>
+        <member name="M:TmsTcAPI.Controllers.CotizacionController.ObtenerDestinos(System.String,System.String,System.Int32,System.Single,System.Single)">
+            <summary>
+            Regresa la consulta de Paises
+            </summary>
+            <returns>string lista de paises</returns>
+        </member>
+        <member name="M:TmsTcAPI.Controllers.CotizacionController.ObtenerRepartos(System.String,System.String,System.Int32,System.Single,System.Single)">
+            <summary>
+            Regresa la consulta de Paises
+            </summary>
+            <returns>string lista de paises</returns>
+        </member>
+        <member name="M:TmsTcAPI.Controllers.CotizacionController.ObtenerEstructuraCostosVariables(System.String,System.String,System.Int32,System.Single,System.Single)">
+            <summary>
+            Regresa la consulta de Paises
+            </summary>
+            <returns>string lista de paises</returns>
+        </member>
+        <member name="M:TmsTcAPI.Controllers.CotizacionController.ObtenerEstructuraCostosFijos(System.String,System.String,System.Int32,System.Single,System.Single)">
+            <summary>
+            Regresa la consulta de Paises
+            </summary>
+            <returns>string lista de paises</returns>
+        </member>
+        <member name="M:TmsTcAPI.Controllers.CotizacionController.ObtenerRegresos(System.String,System.String,System.Int32,System.Single,System.Single)">
+            <summary>
+            Regresa la consulta de Paises
+            </summary>
+            <returns>string lista de paises</returns>
+        </member>
+        <member name="M:TmsTcAPI.Controllers.CotizacionController.ObtenerPrecioFleteHistorico(System.String,System.String,System.Int32,System.Single,System.Single)">
+            <summary>
+            Regresa la consulta de Paises
+            </summary>
+            <returns>string lista de paises</returns>
+        </member>
+        <member name="M:TmsTcAPI.Controllers.CotizacionController.ObtenerProbabilidadCarga(System.String,System.String,System.Int32,System.Single,System.Single)">
+            <summary>
+            Regresa la consulta de Paises
+            </summary>
+            <returns>string lista de paises</returns>
+        </member>
+        <member name="M:TmsTcAPI.Controllers.CotizacionController.GeneraTarifas(System.String,System.String,System.Int32,System.Single,System.Single)">
+            <summary>
+            Regresa la consulta de Paises
+            </summary>
+            <returns>string lista de paises</returns>
+        </member>
+        <member name="M:TmsTcAPI.Controllers.OficinasController.AdministracionRampas(System.String,System.String,System.Int32,System.Single,System.Single)">
+            <summary>
+            Regresa la consulta de Paises
+            </summary>
+            <returns>string lista de paises</returns>
+        </member>
+        <member name="M:TmsTcAPI.Controllers.OficinasController.Regresos(System.String,System.String,System.Int32,System.Single,System.Single)">
+            <summary>
+            Regresa la consulta de Paises
+            </summary>
+            <returns>string lista de paises</returns>
+        </member>
+        <member name="M:TmsTcAPI.Controllers.OperadoresController.Rendimiento(System.Int32)">
+            <summary>
+            Regresa la consulta de Paises
+            </summary>
+            <returns>string lista de paises</returns>
+        </member>
+        <member name="M:TmsTcAPI.Controllers.RutasController.ObtenerInfoRuta(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Regresa la ruta generada por GlobalMap entre un punto de Origen y uno de Destino
+            </summary>
+            <returns>string valores de una ruta</returns>
+        </member>
+        <member name="M:TmsTcAPI.Other.Utils.IsNull(System.String)">
+            <summary>
+            IsNull verifies if name is null then returns an empty space
+            else returns name
+            </summary>
+            <returns>string</returns>
+            <param name="nombre">nombre</param>
+        </member>
+        <member name="M:PropertyMapper.ToList``1(System.Data.IDataReader,System.Boolean)">
+            <summary>
+            ExtensionMethod that creates a List(of Target) from the IDataReader
+            </summary>
+            <typeparam name="Target"></typeparam>
+            <param name="Reader">IDataReader</param>
+            <returns>Generic List</returns>
+        </member>
+        <member name="M:PropertyMapper.ToList``1(System.Data.IDataReader,System.Globalization.CultureInfo,System.Boolean)">
+            <summary>
+            ExtensionMethod that creates a List(of Target) from the IDataReader
+            </summary>
+            <typeparam name="Target"></typeparam>
+            <param name="Reader">IDataReader</param>
+            <param name="Provider">IFormatProvider</param>
+            <returns>Generic List</returns>
+        </member>
+        <member name="M:PropertyMapper.ToLinkedList``1(System.Data.IDataReader,System.Boolean)">
+            <summary>
+            ExtensionMethod that creates a LinkedList(of Target) from the IDataReader
+            </summary>
+            <typeparam name="Target"></typeparam>
+            <param name="Reader">IDataReader</param>
+            <returns>Generic List</returns>
+        </member>
+        <member name="M:PropertyMapper.ToLinkedList``1(System.Data.IDataReader,System.Globalization.CultureInfo,System.Boolean)">
+            <summary>
+            ExtensionMethod that creates a LinkedList(of Target) from the IDataReader
+            </summary>
+            <typeparam name="Target"></typeparam>
+            <param name="Reader">IDataReader</param>
+            <param name="Provider">IFormatProvider</param>
+            <returns>Generic List</returns>
+        </member>
+        <member name="M:PropertyMapper.AsEnumerable``1(System.Data.IDataReader,System.Boolean)">
+            <summary>
+            ExtensionMethod that creates an IEnumerable from the IDatareader
+            </summary>
+            <param name="Reader">IDataReader</param>
+            <returns>IEnumerable</returns>
+        </member>
+        <member name="M:PropertyMapper.AsEnumerable``1(System.Data.IDataReader,System.Globalization.CultureInfo,System.Boolean)">
+            <summary>
+            ExtensionMethod that creates an IEnumerable from the IDatareader
+            </summary>
+            <param name="Reader">IDataReader</param>
+            <param name="Provider">IFormatProvider</param>
+            <returns>IEnumerable</returns>
+        </member>
+        <member name="M:PropertyMapper.ToDictionary``2(System.Data.IDataReader,System.Func{``1,``0},System.Boolean)">
+            <summary>
+            ExtensionMethod that creates a Dictionary from the IDatareader using specified key selector function
+            </summary>
+        </member>
+        <member name="M:PropertyMapper.ToDictionary``2(System.Data.IDataReader,System.Func{``1,``0},System.Globalization.CultureInfo,System.Boolean)">
+            <summary>
+            ExtensionMethod that creates a Dictionary from the IDatareader using specified key selector function
+            </summary>
+        </member>
+        <member name="M:PropertyMapper.GetConversionExpression(System.Type,System.Linq.Expressions.Expression,System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            Gets an expression representing the Source converted to the TargetType
+            </summary>
+            <param name="SourceType">The Type of the Source</param>
+            <param name="SourceExpression">An Expression representing the Source value</param>
+            <param name="TargetType">The Type of the Target</param>
+            <returns>Expression</returns>
+        </member>
+        <member name="M:PropertyMapper.GetArrayHandlerExpression(System.Linq.Expressions.Expression,System.Type)">
+            <summary>
+            Handles conversions of Byte arrays
+            </summary>
+            <param name="SourceExpression"></param>
+            <param name="TargetType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PropertyMapper.GetEnumParseExpression(System.Linq.Expressions.Expression,System.Type)">
+            <summary>
+            Creates an expression that parses a string to an enum
+            </summary>
+            <param name="SourceExpression">The Source to parse</param>
+            <param name="TargetType">The Type of enum</param>
+            <returns>MethodCallExpression</returns>
+        </member>
+        <member name="M:PropertyMapper.GetGenericParseExpression(System.Linq.Expressions.Expression,System.Type)">
+            <summary>
+            Creates an Expression that parses a string to Char or Boolean
+            </summary>
+            <param name="SourceExpression"></param>
+            <param name="TargetType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PropertyMapper.GetNumberParseExpression(System.Linq.Expressions.Expression,System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            Creates an Expression that parses a string to a number
+            </summary>
+            <param name="SourceExpression"></param>
+            <param name="TargetType"></param>
+            <param name="Provider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PropertyMapper.GetDateTimeParseExpression(System.Linq.Expressions.Expression,System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            Creates an Expression that parses a string to a DateTime
+            </summary>
+            <param name="SourceExpression"></param>
+            <param name="TargetType"></param>
+            <param name="Culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PropertyMapper.GetParseExpression(System.Linq.Expressions.Expression,System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            Creates an Expression that parses a string
+            </summary>
+            <param name="SourceExpression"></param>
+            <param name="TargetType"></param>
+            <param name="Provider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PropertyMapper.GetUnderlyingType(System.Type)">
+            <summary>
+            Returns Underlying Type if it's a nullable, otherwise the type itself
+            </summary>
+            <param name="Type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PropertyMapper.GetNullCheckExpression(System.Type,System.Linq.Expressions.ParameterExpression,System.Int32)">
+            <summary>
+            Gets an Expression that checks if the current RecordField is null
+            </summary>
+            <param name="RecordType">The Type of the Record</param>
+            <param name="RecordInstance">The Record instance</param>
+            <param name="Ordinal">The index of the parameter</param>
+            <returns>MethodCallExpression</returns>
+        </member>
+        <member name="M:PropertyMapper.GetRecordFieldExpression(System.Type,System.Linq.Expressions.ParameterExpression,System.Int32,System.Type)">
+            <summary>
+            Gets an Expression that represents the getter method for the RecordField
+            </summary>
+            <param name="RecordType">The Type of the Record</param>
+            <param name="RecordInstanceExpression">The Record instance</param>
+            <param name="Ordinal">The index of the parameter</param>
+            <param name="RecordFieldType">The Type of the RecordField</param>
+            <returns></returns>
+        </member>
+        <member name="M:PropertyMapper.GetFieldNameAttribute(System.Reflection.MemberInfo)">
+            <summary>
+            Returns The FieldNameAttribute if existing
+            </summary>
+            <param name="Member">MemberInfo</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:PropertyMapper.MemberMatchesName(System.Reflection.MemberInfo,System.String)">
+            <summary>
+            Checks if the Field name matches the Member name or Members FieldNameAttribute
+            </summary>
+            <param name="Member">The Member of the Instance to check</param>
+            <param name="Name">The Name to compare with</param>
+            <returns>True if Fields match</returns>
+            <remarks>FieldNameAttribute takes precedence over TargetMembers name.</remarks>
+        </member>
+        <member name="M:PropertyMapper.GetTargetValueExpression(System.Data.IDataRecord,System.Globalization.CultureInfo,System.Type,System.Linq.Expressions.ParameterExpression,System.Data.DataTable,System.Int32,System.Type)">
+            <summary>
+            Returns an Expression representing the value to set the TargetProperty to
+            </summary>
+            <remarks>Prepares the parameters to call the other overload</remarks>
+        </member>
+        <member name="M:PropertyMapper.GetInstanceCreator``1(System.Data.IDataRecord,System.Globalization.CultureInfo,System.Boolean)">
+            <summary>
+            Creates a delegate that creates an instance of Target from the supplied DataRecord
+            </summary>
+            <param name="RecordInstance">An instance of a DataRecord</param>
+            <returns>A Delegate that creates a new instance of Target with the values set from the supplied DataRecord</returns>
+            <remarks></remarks>
+        </member>
+    </members>
+</doc>
